@@ -31,7 +31,3 @@ fun DependencyHandler.testImplementation(dependencyNotation: String): Dependency
 
 fun DependencyHandler.androidTestImplementation(dependencyNotation: String): Dependency? =
     add("androidTestImplementation", dependencyNotation)
-
-fun DependencyHandler.compileOnly(depName: String) {
-    add("compileOnly", depName)
-}
