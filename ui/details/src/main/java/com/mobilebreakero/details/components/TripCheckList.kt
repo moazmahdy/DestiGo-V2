@@ -1,6 +1,5 @@
 package com.mobilebreakero.details.components
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,12 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material3.Icon
@@ -26,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,20 +34,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
 import com.mobilebreakero.domain.model.Trip
 
 @Composable
 fun TripCheckList(
     trip: Trip,
-    navController: NavController,
-    viewModel: DetailsViewModel = hiltViewModel()
+    navController: NavController
 ) {
     val tripJournals = trip.checkList?.size ?: 0
 
@@ -142,14 +137,9 @@ fun TripCheckList(
                                 modifier = Modifier
                                     .padding(10.dp)
                             )
-                            val isChecked by remember {
-                                mutableStateOf(
-                                    trip.checkList?.get(it)?.checked
-                                )
-                            }
-                            Log.e("CHECKED", isChecked.toString())
+                            var isChecked by remember { mutableStateOf(false) }
 
-                            val icon = if (isChecked == true) {
+                            val icon = if (isChecked) {
                                 Icons.Filled.CheckCircle
                             } else {
                                 Icons.Outlined.CheckCircle
@@ -163,7 +153,7 @@ fun TripCheckList(
                                     .padding(4.dp)
                                     .size(30.dp)
                                     .clickable {
-
+                                        isChecked = !isChecked
                                     },
                                 tint = Color(0xff4F80FF)
                             )

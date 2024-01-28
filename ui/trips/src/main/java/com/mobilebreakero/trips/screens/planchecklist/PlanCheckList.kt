@@ -33,7 +33,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes
 import com.mobilebreakero.data.repoimpl.GenerateRandomIdNumber
-import com.mobilebreakero.domain.model.CheckList
 import com.mobilebreakero.trips.TripsViewModel
 import com.mobilebreakero.trips.components.CreateTripButton
 

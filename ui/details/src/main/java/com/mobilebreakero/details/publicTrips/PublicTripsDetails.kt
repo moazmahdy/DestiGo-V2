@@ -48,6 +48,7 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.common_ui.components.ShowDatePickerDialog
 import com.mobilebreakero.common_ui.components.calculateEndDate
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R

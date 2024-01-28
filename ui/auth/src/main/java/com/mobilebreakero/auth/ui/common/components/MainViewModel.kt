@@ -7,10 +7,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobilebreakero.domain.model.Trip
-import com.mobilebreakero.domain.repo.ReloadUserResponse
-import com.mobilebreakero.domain.repo.SignOutResponse
 import com.mobilebreakero.domain.repo.getTripsResponse
 import com.mobilebreakero.domain.repo.updateTripResponse
+import com.mobilebreakero.domain.typealiases.ReloadUserResponse
+import com.mobilebreakero.domain.typealiases.SignOutResponse
 import com.mobilebreakero.domain.usecase.auth.AuthUseCase
 import com.mobilebreakero.domain.usecase.firestore.TripsUseCase
 import com.mobilebreakero.domain.util.Response
@@ -18,7 +18,6 @@ import com.mobilebreakero.domain.util.Response.Success
 import com.mobilebreakero.domain.util.Response.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -72,7 +71,6 @@ class MainViewModel @Inject constructor(
 
 
     private val _tripsFlow = MutableStateFlow<getTripsResponse>(Loading)
-    val tripsFlow: StateFlow<getTripsResponse> get() = _tripsFlow
 
     var tripsResult by mutableStateOf(listOf<Trip>())
 

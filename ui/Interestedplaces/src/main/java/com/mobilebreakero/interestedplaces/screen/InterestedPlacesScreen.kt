@@ -1,6 +1,5 @@
 package com.mobilebreakero.interestedplaces.screen
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -32,7 +31,6 @@ import com.mobilebreakero.domain.model.AppUser
 import com.mobilebreakero.interestedplaces.InterestedPlacesViewModel
 import com.mobilebreakero.interestedplaces.components.GreetingSection
 import com.mobilebreakero.interestedplaces.components.VerticalGrid
-import com.mobilebreakero.interestedplaces.components.selectedItemsList
 import com.mobilebreakero.interestedplaces.components.selectedItemsNames
 
 

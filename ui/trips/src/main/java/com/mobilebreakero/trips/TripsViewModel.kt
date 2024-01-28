@@ -1,6 +1,5 @@
 package com.mobilebreakero.trips
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -9,14 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.domain.model.DataItem
-import com.mobilebreakero.domain.model.PhotoDataItem
 import com.mobilebreakero.domain.model.Trip
 import com.mobilebreakero.domain.model.TripsItem
 import com.mobilebreakero.domain.repo.addTripResponse
 import com.mobilebreakero.domain.repo.getPublicTripsResponse
 import com.mobilebreakero.domain.repo.getTripsResponse
 import com.mobilebreakero.domain.repo.updateTripResponse
-import com.mobilebreakero.domain.usecase.PhotoUseCase
 import com.mobilebreakero.domain.usecase.SearchPlacesUseCase
 import com.mobilebreakero.domain.usecase.firestore.TripsUseCase
 import com.mobilebreakero.domain.util.Response
@@ -30,8 +27,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TripsViewModel @Inject constructor(
     private val tripsUseCase: TripsUseCase,
-    private val useCase: SearchPlacesUseCase,
-    private val photoUseCase: PhotoUseCase
+    private val useCase: SearchPlacesUseCase
 ) : ViewModel() {
 
     val currentUser = Firebase.auth.currentUser?.uid
@@ -53,14 +49,11 @@ class TripsViewModel @Inject constructor(
                     val trips = result.data
                     tripsResult = trips
                     _tripsFlow.value = Response.Success(trips)
-                    Log.e("TripsViewModel", "getTrips success: $trips")
                 } else {
                     _tripsFlow.value = result
-                    Log.e("TripsViewModel", "getTrips loading: $result")
                 }
             } catch (e: Exception) {
                 _tripsFlow.value = Response.Failure(e)
-                Log.e("TripsViewModel", "getTrips error: $e")
             }
         }
     }
@@ -78,15 +71,12 @@ class TripsViewModel @Inject constructor(
                     val trips = result.data
                     publicTripResult = trips
                     _publicTripsFlow.value = Response.Success(trips)
-                    Log.e("TripsViewModel", "getPublicTrips: $trips")
                 } else {
                     _publicTripsFlow.value = result
-                    Log.e("TripsViewModel", "getPublicTrips: $result")
 
                 }
             } catch (e: Exception) {
                 _publicTripsFlow.value = Response.Failure(e)
-                Log.e("TripsViewModel", "getPublicTrips: $e")
             }
         }
     }
@@ -148,25 +138,6 @@ class TripsViewModel @Inject constructor(
         }
     }
 
-    var addPhotoResponse by mutableStateOf<updateTripResponse>(Response.Success(false))
-        private set
-
-    fun addPhoto(photo: String, id: String) {
-
-        viewModelScope.launch {
-            try {
-                addPhotoResponse = Response.Loading
-                addPhotoResponse = tripsUseCase.updatePhoto(photo, id)
-
-            } catch (
-                e: Exception
-            ) {
-                addPhotoResponse =
-                    Response.Failure(e)
-            }
-        }
-    }
-
     private val _searchResult =
         MutableStateFlow<Response<List<DataItem?>>>(Response.Success(listOf()))
     val searchResult: StateFlow<Response<List<DataItem?>>> = _searchResult
@@ -181,22 +152,5 @@ class TripsViewModel @Inject constructor(
             _searchResult.value = result
         }
     }
-
-    private val _photo =
-        MutableStateFlow<Response<List<PhotoDataItem?>>>(Response.Success(listOf()))
-    val photo: StateFlow<Response<List<PhotoDataItem?>>> = _photo
-
-    fun getPhoto(locationId: String) {
-        viewModelScope.launch {
-            try {
-                _photo.value = Response.Loading
-                val result = photoUseCase.invoke(locationId)
-                _photo.value = result
-            } catch (e: Exception) {
-                _photo.value = Response.Failure(e)
-            }
-        }
-    }
-
 
 }

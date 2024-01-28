@@ -30,7 +30,7 @@ fun DetailsCard(
 ) {
     Box(
         modifier = Modifier
-            .width(350.dp)
+            .fillMaxWidth()
             .wrapContentHeight()
             .padding(10.dp)
             .background(Color.Transparent)

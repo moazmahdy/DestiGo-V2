@@ -26,12 +26,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobilebreakero.common_ui.components.AuthButton
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.component.AuthTextField
-import com.mobilebreakero.profile.account.accountacess.updatepassword.PasswordResetViewModel
 import com.mobilebreakero.profile.component.PasswordTextField
 
 
@@ -84,6 +82,89 @@ fun UpdatePasswordContent(
         PasswordTextField(onValueChange = {
             passwordOrEmail.value = it
         })
+
+        Spacer(modifier = Modifier.height(33.dp))
+
+        AuthButton(
+            onClick = {
+                onClick(passwordOrEmail.value)
+            },
+            buttonColor = Color(0xff4F80FF),
+            text = buttonText, modifier = Modifier
+                .shadow(elevation = 0.dp, shape = CircleShape)
+                .width(270.dp)
+                .height(50.dp)
+                .wrapContentHeight()
+                .padding(horizontal = 20.dp, vertical = 2.dp)
+        )
+
+        Spacer(modifier = Modifier.height(33.dp))
+
+        Text(
+            text = cancelText,
+            color = Color(0xffB3B3B3),
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.clickable {
+                navController.navigate(route = cancelNav)
+            }
+        )
+    }
+}
+
+@Composable
+fun UpdateContent(
+    headerText: String,
+    header2: String,
+    textField: String,
+    buttonText: String,
+    cancelText: String,
+    cancelNav: String,
+    navController: NavController,
+    onClick: (String) -> Unit
+) {
+
+    val passwordOrEmail = remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+
+        Image(
+            painter = painterResource(id = R.drawable.confirmation),
+            modifier = Modifier.size(160.dp),
+            contentScale = ContentScale.FillBounds,
+            contentDescription = "Confirmation"
+        )
+
+        Spacer(modifier = Modifier.height(22.dp))
+
+        Text(
+            text = headerText,
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold
+        )
+
+        Text(
+            text = header2,
+            color = Color(0xffB3B3B3),
+            fontSize = 14.sp,
+            textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = 30.dp, vertical = 12.dp)
+        )
+
+        Spacer(modifier = Modifier.height(22.dp))
+
+        AuthTextField(
+            onValueChange = {
+                passwordOrEmail.value = it
+            },
+            text = passwordOrEmail.value,
+            label = textField
+        )
 
         Spacer(modifier = Modifier.height(33.dp))
 

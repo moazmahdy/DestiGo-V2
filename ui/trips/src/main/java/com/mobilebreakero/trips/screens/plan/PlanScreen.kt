@@ -1,6 +1,5 @@
 package com.mobilebreakero.trips.screens.plan
 
-
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -77,7 +76,6 @@ fun PlanScreen(
 
     val publicTrips by viewModel.publicTripsFlow.collectAsState()
     val publicTrips_ = viewModel.publicTripResult
-
 
     viewModel.getTrips(userId = user.value.id ?: "")
     viewModel.getPublicTrips(userId = user.value.id ?: "")
@@ -307,46 +305,17 @@ fun PlanScreen(
 
                                     }
 
-                                    else -> {}
+                                    else -> {
+                                        items(1) {
+                                            Text(text = "No Saved trips", fontSize = 24.sp)
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
 
                     else -> {
-                        when (selectedTabIndex) {
-                            2 -> {
-                                when (publicTrips) {
-                                    is Response.Loading -> {
-                                        items(1) {
-                                            LoadingIndicator()
-                                        }
-                                    }
-
-                                    is Response.Success -> {
-                                        val _publicTrips =
-                                            (publicTrips as Response.Success<List<TripsItem>>).data
-                                        Log.d("PlanScreen", "Public Trips: $_publicTrips")
-
-                                        items(_publicTrips.size) { index ->
-                                            TripItem(
-                                                imageUri = _publicTrips[index].image,
-                                                name = _publicTrips[index].title ?: "",
-                                                location = _publicTrips[index].category ?: "",
-                                                onFavoriteClick = {},
-                                                onClick = {
-                                                    navController.navigate("tripDetails/${_publicTrips[index].id}")
-                                                }
-                                            )
-                                        }
-
-                                    }
-
-                                    else -> {}
-                                }
-                            }
-                        }
-                        Log.e("PlanScreen", "error")
                     }
 
                 }

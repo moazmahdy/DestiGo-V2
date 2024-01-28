@@ -32,7 +32,7 @@ fun SignUpWithEmailAndPassword(
     navController: NavController
 ) {
 
-    AuthContent("Sign Up")
+    AuthContent()
 
     var usernameText by remember { mutableStateOf("") }
     AuthTextField(

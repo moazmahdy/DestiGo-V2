@@ -77,7 +77,7 @@ fun AccountSettingsContent(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Omar Khalil",
+                text = user.value.name ?: "",
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF4F80FF)

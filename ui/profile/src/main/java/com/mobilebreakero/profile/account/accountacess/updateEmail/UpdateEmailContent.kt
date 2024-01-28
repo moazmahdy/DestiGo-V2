@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.ACCOUNT_ACCESS_SETTINGS
-import com.mobilebreakero.profile.account.accountacess.components.UpdatePasswordContent
+import com.mobilebreakero.profile.account.accountacess.components.UpdateContent
 
 @Composable
 fun ChooseNewEmail(
@@ -22,7 +22,7 @@ fun ChooseNewEmail(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        UpdatePasswordContent(
+        UpdateContent(
             navController = navController,
             headerText = "Choose new email",
             header2 = "New Email",

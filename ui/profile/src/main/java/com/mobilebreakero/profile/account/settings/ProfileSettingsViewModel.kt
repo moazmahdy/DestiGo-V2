@@ -15,9 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileSettingsViewModel @Inject constructor(
-    private val userUseCase: UserUseCase,
-    private val useCase: UserUseCase
-) : ViewModel() {
+    private val userUseCase: UserUseCase) : ViewModel() {
 
     var updateProfilePhoto by mutableStateOf<updateUserResponse>(Response.Success(false))
         private set

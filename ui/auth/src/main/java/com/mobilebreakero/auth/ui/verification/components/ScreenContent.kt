@@ -44,7 +44,7 @@ fun EmailVerificationScreenContent(
     sendvirIficationViewModel: SignUpViewModel = hiltViewModel(),
     viewModel: MainViewModel = hiltViewModel()
 ) {
-    AuthContent("Email Verification")
+    AuthContent()
 
     Column(
         modifier = Modifier.fillMaxSize(),

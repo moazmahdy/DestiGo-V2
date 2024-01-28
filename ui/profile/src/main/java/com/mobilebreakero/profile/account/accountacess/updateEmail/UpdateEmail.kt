@@ -8,11 +8,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.EMAIL_SENT_SUCCESSFULY
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PASSWORD_UPDATED_SUCCESSFULLY
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SCREEN
+import com.mobilebreakero.domain.util.Response.Failure
 import com.mobilebreakero.domain.util.Response.Loading
 import com.mobilebreakero.domain.util.Response.Success
-import com.mobilebreakero.domain.util.Response.Failure
 import com.mobilebreakero.domain.util.Utils.Companion.print
 import com.mobilebreakero.domain.util.Utils.Companion.showMessage
 

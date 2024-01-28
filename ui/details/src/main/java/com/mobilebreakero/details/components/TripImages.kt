@@ -5,22 +5,21 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -31,7 +30,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -44,15 +42,18 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
+import com.mobilebreakero.details.ViewImage
+import com.mobilebreakero.common_ui.extensions.rememberZoomState
+import com.mobilebreakero.common_ui.extensions.zoom
 import com.mobilebreakero.details.loadProgress
 import com.mobilebreakero.details.uploadImageToStorage
 import com.mobilebreakero.domain.model.Trip
 import kotlinx.coroutines.launch
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TripImages(
     trip: Trip,
@@ -174,6 +175,9 @@ fun TripImages(
 
             items(images) { index ->
                 val image = trip.tripImages
+                val sheetState = rememberModalBottomSheetState()
+                val isShown = remember { mutableStateOf(false) }
+
                 if (image != null) {
                     if (image.isNotEmpty())
                         SubcomposeAsyncImage(
@@ -181,16 +185,27 @@ fun TripImages(
                             modifier = Modifier
                                 .height(180.dp)
                                 .width(150.dp)
+                                .clickable {
+                                    isShown.value = true
+                                }
                                 .padding(5.dp)
                                 .clip(RoundedCornerShape(20.dp)),
                             contentDescription = null,
                             contentScale = ContentScale.FillBounds,
                             loading = { LoadingIndicator() })
-
+                }
+                if (isShown.value) {
+                    ModalBottomSheet(
+                        onDismissRequest = { isShown.value = false },
+                        sheetState = sheetState,
+                        content = {
+                            image?.get(index)?.images?.let { ViewImage(image = it) }
+                        },
+                        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+                    )
                 }
 
             }
-
         }
 
         ElevatedButton(onClick = {

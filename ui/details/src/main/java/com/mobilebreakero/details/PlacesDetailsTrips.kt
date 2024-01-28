@@ -5,7 +5,6 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -29,7 +28,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,11 +39,14 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.SubcomposeAsyncImage
 import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.details.components.AmenitiesCard
 import com.mobilebreakero.details.components.DetailsCard
 import com.mobilebreakero.details.components.ItemsChip
+import com.mobilebreakero.details.components.ReviewItemCard
 import com.mobilebreakero.details.components.ShowDatePickerDialog
 import com.mobilebreakero.domain.model.DetailsResponse
 import com.mobilebreakero.domain.model.PhotoDataItem
+import com.mobilebreakero.domain.model.ReviewItem
 import com.mobilebreakero.domain.model.Trip
 import com.mobilebreakero.domain.util.Response
 
@@ -57,10 +58,11 @@ fun PlacesDetailsTrips(
     viewModel: DetailsViewModel = hiltViewModel()
 ) {
 
-    LaunchedEffect(key1 = Unit) {
+    LaunchedEffect(key1 = locationId) {
         viewModel.getPhoto(locationId)
         viewModel.getDetails(locationId)
         viewModel.getTripDetailsResult(tripId)
+        viewModel.getReviews()
     }
 
     val photos by viewModel.photo.collectAsState()
@@ -78,10 +80,13 @@ fun PlacesDetailsTrips(
                     when (tripDetails) {
                         is Response.Success -> {
                             val tripsResults = (tripDetails as Response.Success<Trip>).data
+                            val reviewsResponse = viewModel.getReviews
+
                             PlacesTripDetailsContent(
                                 photos = resultsPhotos,
                                 detailsResponse = detailsResponse,
-                                trip = tripsResults
+                                trip = tripsResults,
+                                reviewResponse = reviewsResponse
                             )
                         }
 
@@ -126,6 +131,7 @@ fun PlacesTripDetailsContent(
     photos: List<PhotoDataItem?>,
     detailsResponse: DetailsResponse,
     viewModel: DetailsViewModel = hiltViewModel(),
+    reviewResponse: List<ReviewItem>? = null,
     trip: Trip
 ) {
 
@@ -225,47 +231,64 @@ fun PlacesTripDetailsContent(
         DetailsCard(title = "About", details = detailsResponse.description ?: "") {
             Spacer(modifier = Modifier.height(20.dp))
         }
+
+        if (detailsResponse.amenities?.isNotEmpty() == true)
+            AmenitiesCard(title = "Amenities", details = detailsResponse.amenities ?: listOf("")) {
+                Spacer(modifier = Modifier.height(20.dp))
+            } else
+            Spacer(modifier = Modifier.height(20.dp))
+
+
         val isDateClicked = remember { mutableStateOf(false) }
 
-        DetailsCard(title = "Your Saved Details", details = "") {
-            val places = trip.places?.size ?: 0
-
-            if (places == 0) {
-                Text(text = "No place details added yet", modifier = Modifier.padding(8.dp))
+        val selectedDate = remember { mutableStateOf(trip.places?.get(0)?.date) }
+        DetailsCard(title = "Schedule visit date", details = "") {
+            ItemsChip(title = selectedDate.value ?: "") {
+                isDateClicked.value = true
             }
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(150.dp)
-            ) {
-                items(places) {
-                    val tripPlace = trip.places!![it]
-                    var selectedDate by remember { mutableStateOf(tripPlace.date ?: "12/12/2023") }
 
-                    Row(
-                        Modifier
-                            .fillMaxWidth()
-                            .height(80.dp)
-                            .horizontalScroll(rememberScrollState())
-                    ) {
-                        ItemsChip(title = selectedDate) {
-                            isDateClicked.value = true
-                        }
-                    }
+        }
 
-                    if (isDateClicked.value) {
-                        ShowDatePickerDialog(selectedDate = selectedDate, onDateSelected = {
-                            selectedDate = it
-                            viewModel.updatePlaceDateToVisit(
-                                id = tripPlace.tripId ?: "",
-                                placeId = tripPlace.id ?: "",
-                                date = it
+        val numberOfReviews = 15
+        val randomReviews = reviewResponse?.shuffled()?.take(numberOfReviews)
+
+        Text(text = "Reviews", fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+
+        LazyColumn(
+            modifier = Modifier
+                .height(300.dp)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(randomReviews?.size ?: 0) { index ->
+                randomReviews?.get(index)?.user?.let {
+                    randomReviews[index].review?.let { it1 ->
+                        randomReviews[index].dateofReview?.let { it2 ->
+                            ReviewItemCard(
+                                it,
+                                it1,
+                                it2
                             )
-                            isDateClicked.value = false
-                        })
+                        }
                     }
                 }
             }
         }
+
+
+        if (isDateClicked.value) {
+            ShowDatePickerDialog(
+                selectedDate = selectedDate.value ?: "",
+                onDateSelected = { date ->
+                    trip.id?.let {
+                        trip.places?.get(0)?.id?.let { it1 ->
+                            selectedDate.value = date
+                        }
+                    }
+                },
+            )
+        }
+
     }
 }

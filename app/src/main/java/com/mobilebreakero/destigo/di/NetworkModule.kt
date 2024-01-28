@@ -1,7 +1,6 @@
 package com.mobilebreakero.destigo.di
 
 import com.mobilebreakero.data.remote.TripApi
-import com.mobilebreakero.domain.util.DataUtils.API_KEY
 import com.mobilebreakero.domain.util.DataUtils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -43,5 +42,6 @@ object NetworkModule {
     fun provideApiService(retrofit: Retrofit): TripApi {
         return retrofit.create(TripApi::class.java)
     }
+
 }
 

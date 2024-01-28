@@ -16,37 +16,6 @@ fun GetUserFromFireStore(
     id: String? = "",
     user: (AppUser) -> Unit,
 ) {
-
-    LaunchedEffect(viewModel) {
-        if (id != null)
-            viewModel.getUser(id).collect { userResponse ->
-                when (userResponse) {
-                    is Success -> {
-                        val userData = (userResponse).data
-                        DataUtils.user = userData
-                        user(userData)
-                    }
-
-                    is Failure -> {
-                        val exception = (userResponse).e
-                        print(exception.message.toString())
-                    }
-
-                    Loading -> {
-                    }
-
-                    else -> {}
-                }
-            }
-    }
-}
-@Composable
-fun GetTripsFromFireStore(
-    viewModel: MainViewModel = hiltViewModel(),
-    id: String? = "",
-    user: (AppUser) -> Unit,
-) {
-
     LaunchedEffect(viewModel) {
         if (id != null)
             viewModel.getUser(id).collect { userResponse ->

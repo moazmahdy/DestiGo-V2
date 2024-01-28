@@ -9,20 +9,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobilebreakero.domain.model.Post
 import com.mobilebreakero.domain.model.RecommendedPlaceItem
+import com.mobilebreakero.domain.model.ReviewItem
 import com.mobilebreakero.domain.model.Trip
 import com.mobilebreakero.domain.model.TripsItem
 import com.mobilebreakero.domain.repo.addPostResponse
 import com.mobilebreakero.domain.repo.addTripResponse
+import com.mobilebreakero.domain.repo.getPublicTripsResponse
 import com.mobilebreakero.domain.repo.getTripsResponse
 import com.mobilebreakero.domain.repo.postDetailsResponse
 import com.mobilebreakero.domain.repo.postResponse
 import com.mobilebreakero.domain.repo.updatePostResponse
 import com.mobilebreakero.domain.repo.updateUserResponse
+import com.mobilebreakero.domain.usecase.GetReviewsUseCase
 import com.mobilebreakero.domain.usecase.RecommendedPlaceUseCase
 import com.mobilebreakero.domain.usecase.RecommendedUseCase
-import com.mobilebreakero.domain.usecase.firestore.UserUseCase
 import com.mobilebreakero.domain.usecase.firestore.PostUseCase
 import com.mobilebreakero.domain.usecase.firestore.TripsUseCase
+import com.mobilebreakero.domain.usecase.firestore.UserUseCase
 import com.mobilebreakero.domain.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -37,6 +40,7 @@ class HomeViewModel @Inject constructor(
     private val recommendedUseCase: RecommendedUseCase,
     private val recommendedPlaceUseCase: RecommendedPlaceUseCase,
     private val tripsUseCase: TripsUseCase,
+    private val getReviewsUseCase: GetReviewsUseCase,
 ) : ViewModel() {
 
     init {
@@ -62,6 +66,50 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    private val _postsIdFlow = MutableStateFlow<postResponse>(Response.Loading)
+    val postsIdFlow: StateFlow<postResponse> get() = _postsFlow
+
+    var postsResult by mutableStateOf(listOf<Post>())
+
+    fun getPostsById(userId: String) {
+        viewModelScope.launch {
+            try {
+                val result = postUseCase.getPostsByUserId(userId)
+                if (result is Response.Success) {
+                    val posts = result.data
+                    postsResult = posts
+                    _postsIdFlow.value = Response.Success(posts)
+                } else {
+                    _postsIdFlow.value = result
+                }
+            } catch (e: Exception) {
+                _postsIdFlow.value = Response.Failure(e)
+            }
+        }
+    }
+
+    private val _publicTripsFlow = MutableStateFlow<getPublicTripsResponse>(Response.Loading)
+    val publicTripsFlow: StateFlow<getPublicTripsResponse> get() = _publicTripsFlow
+
+    var publicTripResult by mutableStateOf(listOf<TripsItem>())
+
+    fun getPublicTrips(userId: String) {
+        viewModelScope.launch {
+            try {
+                val result = tripsUseCase.getPublicTrips(userId)
+                if (result is Response.Success) {
+                    val trips = result.data
+                    publicTripResult = trips
+                    _publicTripsFlow.value = Response.Success(trips)
+                } else {
+                    _publicTripsFlow.value = result
+
+                }
+            } catch (e: Exception) {
+                _publicTripsFlow.value = Response.Failure(e)
+            }
+        }
+    }
 
     var updateLikesResponse by mutableStateOf<updatePostResponse>(Response.Success(false))
         private set
@@ -117,30 +165,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private val _tripsFlow = MutableStateFlow<getTripsResponse>(Response.Loading)
-    val tripsFlow: StateFlow<getTripsResponse> get() = _tripsFlow
-
-    var tripsResult by mutableStateOf(listOf<Trip>())
-
-    fun getTrips(id: String) {
-        viewModelScope.launch {
-            try {
-                val result = userUseCase.getInterestedPlaces(id)
-                if (result is Response.Success) {
-                    val trips = result.data
-                    tripsResult = trips
-                    _tripsFlow.value = Response.Success(trips)
-                    Log.e("HomeViewModel", "getTrips: $trips")
-                } else {
-                    _tripsFlow.value = result
-                    Log.e("HomeViewModel", "getTrips: $result")
-                }
-            } catch (e: Exception) {
-                _tripsFlow.value = Response.Failure(e)
-                Log.e("HomeViewModel", "getTrips: $e")
-            }
-        }
-    }
 
     private val details =
         MutableStateFlow<postDetailsResponse>(Response.Success(Post()))
@@ -220,4 +244,31 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    var deletePostResponse by mutableStateOf<updatePostResponse>(Response.Success(false))
+        private set
+
+    fun deletePost(postId: String) {
+        viewModelScope.launch {
+            try {
+                deletePostResponse = Response.Loading
+                deletePostResponse = postUseCase.deletePost(postId)
+            } catch (e: Exception) {
+                deletePostResponse = Response.Failure(e)
+            }
+        }
+    }
+
+    var getReviews by mutableStateOf(listOf(ReviewItem()))
+        private set
+
+    fun getReviews() {
+        viewModelScope.launch {
+            return@launch try {
+                val result = getReviewsUseCase.invoke()
+                getReviews = result
+            } catch (e: Exception) {
+                getReviews = emptyList()
+            }
+        }
+    }
 }

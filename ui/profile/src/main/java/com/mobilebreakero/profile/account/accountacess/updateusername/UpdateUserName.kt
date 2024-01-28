@@ -14,7 +14,7 @@ import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes
 import com.mobilebreakero.domain.util.Response
 import com.mobilebreakero.domain.util.Utils
-import com.mobilebreakero.profile.account.accountacess.components.UpdatePasswordContent
+import com.mobilebreakero.profile.account.accountacess.components.UpdateContent
 
 
 @Composable
@@ -28,7 +28,7 @@ fun ChooseNewUserName(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
-        UpdatePasswordContent(
+        UpdateContent(
             navController = navController,
             headerText = "Choose new username",
             header2 = "New Username",

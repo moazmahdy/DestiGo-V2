@@ -3,7 +3,6 @@ package com.mobilebreakero.navigation
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -15,10 +14,6 @@ import androidx.navigation.compose.composable
 import com.mobilebreakero.addpost.AddPostScreen
 import com.mobilebreakero.auth.ui.login.components.SendForgetPassword
 import com.mobilebreakero.auth.ui.login.screens.LoginScreen
-import com.mobilebreakero.profile.account.accountacess.updatepassword.screens.ChooseNewPasswordScreen
-import com.mobilebreakero.profile.account.accountacess.updatepassword.screens.ConfirmTheConfirmationCodeScreen
-import com.mobilebreakero.profile.account.accountacess.components.PasswordUpdatedSuccessfullyScreen
-import com.mobilebreakero.profile.account.accountacess.updatepassword.screens.SendConfirmationCodeScreen
 import com.mobilebreakero.auth.ui.signup.screens.SignUpScreen
 import com.mobilebreakero.auth.ui.start.screen.StartAuthScreen
 import com.mobilebreakero.auth.ui.verification.EmailVerificationScreen
@@ -42,6 +37,7 @@ import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PASSWORD_UPDATED
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PLACES_DETAILS_SCREEN
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PLAN_CHECK_LIST
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.POSTS_DETAILS
+import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_DETAILS
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SCREEN
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SETTINGS
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PUBLIC_TRIP_DETAILS
@@ -67,18 +63,23 @@ import com.mobilebreakero.details.publicTrips.PublicTripDetails
 import com.mobilebreakero.home.AddCommentScreen
 import com.mobilebreakero.home.HomeScreen
 import com.mobilebreakero.home.PostDetailsScreen
+import com.mobilebreakero.home.ProfileDetailsScreen
 import com.mobilebreakero.interestedplaces.screen.InterestedPlacesScreen
 import com.mobilebreakero.profile.account.AccountSettings
+import com.mobilebreakero.profile.account.ProfileSettingsScreen
+import com.mobilebreakero.profile.account.accountacess.AccountAccessSettingsScreen
+import com.mobilebreakero.profile.account.accountacess.SignInBeforeUpdatingYourInformation
+import com.mobilebreakero.profile.account.accountacess.components.PasswordUpdatedSuccessfullyScreen
+import com.mobilebreakero.profile.account.accountacess.updateEmail.ChooseNewEmail
+import com.mobilebreakero.profile.account.accountacess.updateEmail.EmailUpdateSentSuccessfully
+import com.mobilebreakero.profile.account.accountacess.updatepassword.screens.ChooseNewPasswordScreen
+import com.mobilebreakero.profile.account.accountacess.updatepassword.screens.ConfirmTheConfirmationCodeScreen
+import com.mobilebreakero.profile.account.accountacess.updatepassword.screens.SendConfirmationCodeScreen
+import com.mobilebreakero.profile.account.accountacess.updateusername.ChooseNewUserName
 import com.mobilebreakero.profile.screen.ProfileScreen
 import com.mobilebreakero.profile.screen.SavedScreen
 import com.mobilebreakero.profile.screen.YourPostsScreen
 import com.mobilebreakero.profile.screen.YourTripsScreen
-import com.mobilebreakero.profile.account.ProfileSettingsScreen
-import com.mobilebreakero.profile.account.accountacess.AccountAccessSettingsScreen
-import com.mobilebreakero.profile.account.accountacess.SignInBeforeUpdatingYourInformation
-import com.mobilebreakero.profile.account.accountacess.updateEmail.ChooseNewEmail
-import com.mobilebreakero.profile.account.accountacess.updateEmail.EmailUpdateSentSuccessfully
-import com.mobilebreakero.profile.account.accountacess.updateusername.ChooseNewUserName
 import com.mobilebreakero.scan.ScanScreen
 import com.mobilebreakero.search.screen.SearchScreen
 import com.mobilebreakero.trips.screens.addplaces.AddPlacesScreen
@@ -199,10 +200,10 @@ fun MainNavHost(
             AccountSettings(navController = navController)
         }
         composable(route = YOUR_POSTS_SCREEN) {
-            YourPostsScreen()
+            YourPostsScreen(navController = navController)
         }
         composable(route = YOUR_TRIPS_SCREEN) {
-            YourTripsScreen()
+            YourTripsScreen(navController = navController)
         }
         composable(route = ADD_PLACES_SCREEN) {
             val tripId = it.arguments?.getString("tripId", "")
@@ -218,10 +219,10 @@ fun MainNavHost(
             }
         }
         composable(route = SAVED_SCREEN) {
-            SavedScreen()
+            SavedScreen(navController = navController)
         }
         composable(route = PROFILE_SETTINGS) {
-            ProfileSettingsScreen(navController = navController)
+            ProfileSettingsScreen()
         }
         composable(route = ACCOUNT_ACCESS_SETTINGS) {
             AccountAccessSettingsScreen(navController = navController)
@@ -267,6 +268,9 @@ fun MainNavHost(
             val tripId = backStackEntry.arguments?.getString("tripId", "")
             PlacesDetailsTrips(tripId = tripId ?: "", locationId = locationId ?: "")
         }
-
+        composable(route = PROFILE_DETAILS) { backStackEntry ->
+            val userId = backStackEntry.arguments?.getString("userId", "")
+            ProfileDetailsScreen(navController = navController, userID = userId)
+        }
     }
 }

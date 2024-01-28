@@ -5,6 +5,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,7 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
@@ -31,7 +33,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -40,11 +41,16 @@ import coil.compose.SubcomposeAsyncImage
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.domain.model.DetailsResponse
 import com.mobilebreakero.domain.model.PhotoDataItem
+import com.mobilebreakero.domain.model.ReviewItem
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun DetailsContent(photos: List<PhotoDataItem?>, detailsResponse: DetailsResponse) {
+fun DetailsContent(
+    photos: List<PhotoDataItem?>,
+    detailsResponse: DetailsResponse,
+    reviewResponse: List<ReviewItem?>?
+) {
 
     val pagerState = rememberPagerState(
         initialPage = 0,
@@ -52,7 +58,6 @@ fun DetailsContent(photos: List<PhotoDataItem?>, detailsResponse: DetailsRespons
     ) {
         photos.size
     }
-    val context = LocalContext.current
 
     Column(
         modifier = Modifier
@@ -144,8 +149,37 @@ fun DetailsContent(photos: List<PhotoDataItem?>, detailsResponse: DetailsRespons
             Spacer(modifier = Modifier.height(20.dp))
         }
 
-        AmenitiesCard(title = "Amenities", details = detailsResponse.amenities ?: listOf("")) {
+        if (detailsResponse.amenities?.isNotEmpty() == true)
+            AmenitiesCard(title = "Amenities", details = detailsResponse.amenities ?: listOf("")) {
+                Spacer(modifier = Modifier.height(20.dp))
+            } else
             Spacer(modifier = Modifier.height(20.dp))
+
+        val numberOfReviews = 15
+        val randomReviews = reviewResponse?.shuffled()?.take(numberOfReviews)
+
+        Text(text = "Reviews", fontSize = 18.sp, modifier = Modifier.padding(8.dp))
+
+        LazyColumn(
+            modifier = Modifier
+                .height(300.dp)
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(randomReviews?.size ?: 0) { index ->
+                randomReviews?.get(index)?.user?.let {
+                    randomReviews[index]?.review?.let { it1 ->
+                        randomReviews[index]?.dateofReview?.let { it2 ->
+                            ReviewItemCard(
+                                it,
+                                it1,
+                                it2
+                            )
+                        }
+                    }
+                }
+            }
         }
 
     }
@@ -188,5 +222,40 @@ fun ElevatedButton(
                 fontWeight = FontWeight.Bold
             )
         }
+    }
+}
+
+
+@Composable
+fun ReviewItemCard(commenter: String, comment: String, date: String) {
+
+    Column(
+        modifier = Modifier
+            .clip(RoundedCornerShape(20.dp))
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 5.dp, vertical = 10.dp)
+            .background(Color(0xFFD5E1FF).copy(alpha = 0.3f))
+            .border(
+                width = .2.dp,
+                color = Color(0xFF4F80FF),
+                shape = RoundedCornerShape(20.dp)
+            )
+    ) {
+        Text(
+            text = commenter,
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+            fontSize = 24.sp,
+            color = Color(0xFF4F80FF)
+        )
+        Spacer(modifier = Modifier.height(2.dp))
+        Text(
+            text = date,
+            modifier = Modifier.padding(start = 8.dp, end = 8.dp),
+            fontSize = 10.sp,
+            color = Color(0xFF4F80FF)
+        )
+        Text(text = comment, modifier = Modifier.padding(8.dp), fontSize = 12.sp)
+        Spacer(modifier = Modifier.height(5.dp))
     }
 }

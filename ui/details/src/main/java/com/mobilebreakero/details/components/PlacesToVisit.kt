@@ -6,22 +6,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.BottomCenter
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -39,10 +33,9 @@ import com.mobilebreakero.common_ui.components.CoilImage
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
-import com.mobilebreakero.details.loadProgress
 import com.mobilebreakero.domain.model.Trip
 import com.mobilebreakero.domain.util.Response
-import kotlinx.coroutines.launch
+
 
 @Composable
 fun PlacesToVisit(
@@ -101,8 +94,6 @@ fun PlacesToVisit(
                     .padding(10.dp)
                     .align(BottomCenter)
             )
-
-
         }
     } else
         LazyRow(
@@ -116,11 +107,7 @@ fun PlacesToVisit(
 
             items(places) {
                 val photos = viewModel.photoResult
-
-                LaunchedEffect(key1 = places) {
-                    viewModel.getPhoto(trip.places?.get(it)?.location ?: "")
-                }
-
+                viewModel.getPhoto(trip.places?.get(it)?.location ?: "")
                 CoilImage(
                     contentDescription = "",
                     modifier = Modifier
@@ -139,7 +126,8 @@ fun PlacesToVisit(
                     },
                     title = trip.places?.get(it)?.name ?: "",
                     desc = trip.places?.get(it)?.date ?: "click to update",
-                    onFavoriteClick = {}
+                    onFavoriteClick = {
+                    }
                 )
                 Spacer(modifier = Modifier.height(6.dp))
             }

@@ -5,8 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobilebreakero.domain.repo.SendPasswordResetEmailResponse
-import com.mobilebreakero.domain.repo.SignInResponse
+import com.mobilebreakero.domain.typealiases.SendPasswordResetEmailResponse
+import com.mobilebreakero.domain.typealiases.SignInResponse
 import com.mobilebreakero.domain.usecase.auth.AuthUseCase
 import com.mobilebreakero.domain.util.Response.Success
 import com.mobilebreakero.domain.util.Response.Loading

@@ -4,11 +4,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.data.repoimpl.AuthRepositoryImpl
 import com.mobilebreakero.data.repoimpl.FireStoreRepoImpl
 import com.mobilebreakero.data.repoimpl.PostRepoImpl
 import com.mobilebreakero.data.repoimpl.TripRepoImpl
-import com.mobilebreakero.domain.repo.AuthRepository
 import com.mobilebreakero.domain.repo.FireStoreRepository
 import com.mobilebreakero.domain.repo.PostsRepo
 import com.mobilebreakero.domain.repo.TripsRepo

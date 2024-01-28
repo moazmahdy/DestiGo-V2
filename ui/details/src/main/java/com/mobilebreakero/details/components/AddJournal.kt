@@ -195,7 +195,7 @@ fun AddTripJournal(
                 contentDescription = "Post Image",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(60.dp)
+                    .height(200.dp)
                     .clip(RoundedCornerShape(bottomEnd = 25.dp, bottomStart = 25.dp)),
                 contentScale = ContentScale.Crop,
                 loading = {

@@ -23,9 +23,9 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
@@ -43,7 +43,7 @@ fun CoilImage(
     desc: String? = null,
     onFavoriteClick: () -> Unit,
     saved: Boolean = false,
-    icon: ImageVector? = null
+    icon: Int? = null
 ) {
 
     var isSaved by remember { mutableStateOf(saved) }
@@ -108,7 +108,7 @@ fun CoilImage(
 
         icon?.let {
             Icon(
-                icon,
+                painter = painterResource(icon),
                 tint = Color.White,
                 contentDescription = "Favorite Icon",
                 modifier = Modifier

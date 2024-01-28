@@ -16,7 +16,6 @@ class InterestedPlacesViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-
     var updateUserResponse = mutableStateOf<updateUserResponse>(Response.Success(false))
         private set
 

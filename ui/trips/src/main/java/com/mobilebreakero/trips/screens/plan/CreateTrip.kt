@@ -310,7 +310,6 @@ fun CreateTripScreen(
 
     if (isLocationClicked.value) {
         MapView(
-            selectedLocation = selectedLocation,
             onLocationSelected = {
                 selectedLocation = it
                 isLocationClicked.value = false

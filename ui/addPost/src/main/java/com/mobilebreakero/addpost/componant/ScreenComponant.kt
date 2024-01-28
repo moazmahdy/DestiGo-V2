@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
@@ -43,11 +44,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import coil.compose.SubcomposeAsyncImage
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.mobilebreakero.addpost.R
 import com.mobilebreakero.addpost.viewmodel.AddPostViewModel
-import com.mobilebreakero.common_ui.components.getUserLocation
+import com.mobilebreakero.common_ui.components.MapView
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.HOME_SCREEN
 import com.mobilebreakero.domain.model.Post
 import com.mobilebreakero.domain.util.DataUtils
@@ -73,6 +75,7 @@ fun AddPostCard(navController: NavController, viewModel: AddPostViewModel = hilt
     var isAddPostSatus by remember { mutableStateOf(false) }
     var newStatus by remember { mutableStateOf("") }
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Box(
         modifier = Modifier
@@ -82,35 +85,33 @@ fun AddPostCard(navController: NavController, viewModel: AddPostViewModel = hilt
                 shape = RoundedCornerShape(18.dp),
             )
             .width(350.dp)
-            .height(600.dp)
+            .wrapContentHeight()
             .background(Color(0xFFF8FAFF))
             .clip(RoundedCornerShape(18.dp))
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
         ) {
-            val context = LocalContext.current
-
-            if (isLocationClicked) {
-                getUserLocation(context) { location ->
-                    selectedLocation = location
-                    isLocationClicked = false
-                }
-            }
 
             TitleText()
-
+            if (isLocationClicked) {
+                MapView(onLocationSelected = {
+                    selectedLocation = it
+                    isLocationClicked = false
+                }, getGovernment = {
+                }, context = context)
+            }
             AddPostButtons(iconId = R.drawable.text, text = "add your status", onClick = {
                 isAddPostSatus = true
             }, description = "Text Icon")
 
             AddPostButtons(
                 onClick = {
-                    isLocationClicked = !isLocationClicked
+                    isLocationClicked = true
                 },
                 iconId = R.drawable.location,
                 description = "Location Icon",
-                text = selectedLocation,
+                text = selectedLocation
             )
             AddPostButtons(
                 onClick = {
@@ -119,6 +120,14 @@ fun AddPostCard(navController: NavController, viewModel: AddPostViewModel = hilt
                 iconId = R.drawable.photo,
                 description = "Photo Icon",
                 text = "Upload Photo"
+            )
+            SubcomposeAsyncImage(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .padding(5.dp),
+                model = imageUri,
+                contentDescription = "Add Post Image",
             )
 
             PostOrCancelSection(navController = navController, onClick = {
@@ -179,7 +188,6 @@ fun AddPostCard(navController: NavController, viewModel: AddPostViewModel = hilt
                         Button(
                             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4F80FF)),
                             onClick = {
-                                newStatus = newStatus
                                 isAddPostSatus = false
                             }
                         ) {
@@ -188,6 +196,7 @@ fun AddPostCard(navController: NavController, viewModel: AddPostViewModel = hilt
                     }
                 )
             }
+
 
         }
     }

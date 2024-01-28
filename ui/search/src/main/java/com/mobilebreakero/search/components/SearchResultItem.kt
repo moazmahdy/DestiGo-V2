@@ -1,6 +1,5 @@
 package com.mobilebreakero.search.components
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -12,15 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.pager.VerticalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -28,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale.Companion.FillBounds
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
@@ -35,23 +29,13 @@ import coil.request.ImageRequest
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.domain.model.DataItem
 import com.mobilebreakero.domain.model.PhotoDataItem
-import com.mobilebreakero.domain.util.Response
-import com.mobilebreakero.search.SearchViewModel
 
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SearchResultItem(
     item: DataItem,
     navController: NavController,
-    viewModel: SearchViewModel = hiltViewModel()
-) {
-
-    LaunchedEffect(item) {
-        item.locationId?.let { viewModel.getPhoto(it) }
-    }
-
-    val photos by viewModel.photo.collectAsState()
+    photoDataItem: PhotoDataItem?) {
 
     Box(
         modifier = Modifier
@@ -59,7 +43,6 @@ fun SearchResultItem(
             .height(200.dp)
             .background(Color.Transparent)
     ) {
-
         Column(
             modifier = Modifier
                 .shadow(
@@ -78,65 +61,53 @@ fun SearchResultItem(
         ) {
             Row(modifier = Modifier.fillMaxSize()) {
                 Spacer(modifier = Modifier.width(135.dp))
-                item.name?.let {
-                    Text(
-                        text = it,
-                        color = Color.Black,
-                        modifier = Modifier.padding(top = 15.dp)
-                    )
+                Column {
+                    item.name?.let {
+                        Text(
+                            text = it,
+                            color = Color.Black,
+                            modifier = Modifier.padding(top = 15.dp, start = 15.dp),
+                            fontSize = 14.sp
+                        )
+                    }
+                    Row {
+                        item.addressObj?.country?.let {
+                            Text(
+                                text = "$it, ",
+                                color = Color.Black,
+                                modifier = Modifier.padding(top = 15.dp, start = 15.dp),
+                                fontSize = 8.sp
+                            )
+                        }
+                        item.addressObj?.city?.let {
+                            Text(
+                                text = it,
+                                color = Color.Black,
+                                modifier = Modifier.padding(top = 15.dp),
+                                fontSize = 8.sp
+                            )
+                        }
+                    }
                 }
             }
         }
 
-        when (photos) {
-
-            is Response.Success -> {
-                val results =
-                    (photos as Response.Success<List<PhotoDataItem?>>).data.filter { it?.id.toString() == item.locationId }
-                VerticalPager(
-                    state = rememberPagerState(
-                        initialPage = 0,
-                        initialPageOffsetFraction = 0f
-                    ) {
-                        results.size
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                ) { page ->
-                    val photoOfEachOne = results[page]?.images?.large?.url
-
-                    SubcomposeAsyncImage(
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(photoOfEachOne)
-                            .crossfade(true)
-                            .build(),
-                        modifier = Modifier
-                            .height(170.dp)
-                            .width(125.dp)
-                            .align(Alignment.CenterStart)
-                            .clip(RoundedCornerShape(15.dp)),
-                        contentDescription = null,
-                        contentScale = FillBounds,
-                        loading = {
-                            LoadingIndicator()
-                        },
-                    )
-                }
-            }
-
-            is Response.Failure -> {
-                (photos as Response.Failure).e.message?.let {
-                    Text(
-                        text = it,
-                        color = Color.Red,
-                        modifier = Modifier.padding(top = 15.dp)
-                    )
-                }
-            }
-
-            else -> {
-                LoadingIndicator()
-            }
+        if (photoDataItem != null) {
+            SubcomposeAsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(photoDataItem.images?.large?.url)
+                    .crossfade(true)
+                    .build(),
+                modifier = Modifier
+                    .height(170.dp)
+                    .width(135.dp)
+                    .clip(RoundedCornerShape(20.dp)),
+                contentDescription = null,
+                contentScale = FillBounds,
+                loading = {
+                    LoadingIndicator()
+                },
+            )
         }
-
     }
 }

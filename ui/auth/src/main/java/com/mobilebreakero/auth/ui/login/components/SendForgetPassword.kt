@@ -33,7 +33,7 @@ fun SendForgetPassword(
     viewModel: LoginViewModel = hiltViewModel(),
 ) {
     Column {
-        AuthContent("Forget Password")
+        AuthContent()
 
         var emailText by remember { mutableStateOf("") }
         AuthTextField(

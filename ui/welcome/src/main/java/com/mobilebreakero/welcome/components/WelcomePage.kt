@@ -53,8 +53,9 @@ fun WelcomePage(
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds,
             loading = {
-                CircularProgressIndicator(modifier = Modifier.background(Color.Blue))
-            })
+                CircularProgressIndicator()
+            }
+        )
 
         Column(
             modifier = Modifier
@@ -68,7 +69,7 @@ fun WelcomePage(
 
             Text(
                 text = title,
-                fontSize = 35.sp,
+                fontSize = 32.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -78,7 +79,7 @@ fun WelcomePage(
 
             Text(
                 text = description,
-                fontSize = 16.sp,
+                fontSize = 14.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center,
                 modifier = Modifier

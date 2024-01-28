@@ -26,7 +26,6 @@ import com.mobilebreakero.auth.ui.common.components.AuthTextField
 import com.mobilebreakero.auth.ui.common.components.PasswordTextField
 import com.mobilebreakero.auth.ui.login.LoginViewModel
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.HOME_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SEND_CONFIRMATION_CODE
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SEND_FORGET_PASSWORD_EMAIL
 import com.mobilebreakero.domain.util.Utils.Companion.showMessage
 
@@ -36,7 +35,7 @@ fun SignInWithEmailAndPasswordScreenContent(
     navController: NavController,
     viewModel: LoginViewModel = hiltViewModel(),
 ) {
-    AuthContent("Login")
+    AuthContent()
 
     var emailText by remember { mutableStateOf("") }
     AuthTextField(

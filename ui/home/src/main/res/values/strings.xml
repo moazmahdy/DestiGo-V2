@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="getReady">Get ready for your next trip!</string>
+    <string name="forYou">For You</string>
+    <string name="bestDestinationsForYou">Best destinations for you🌍</string>
+    <string name="letsCreateLabel">Let\'s create the first Trip Plan</string>
+    <string name="letsExploreLabel">Let\'s Explore!</string>
+    <string name="letsTakeAlook">Let\'s take a look!</string>
+    <string name="travellersPosts">"Travellers Posts"</string>
+    <string name="youCanSee">You can see posts from other travellers on DestiGo!</string>
+    <string name="recommendTrips">DestiGo recommend trip plans based on your interests!</string>
+    <string name="getPlaces">DestiGo get the best places for you!</string>
+    <string name="youCanPost">You can also post and share your trip with other travellers here!</string>
+    <string name="takeAlook">Take a look at the posts from other travellers and get inspired! \n and share your own trip…</string>
+    <string name="youAreNotLost">Your are not lost, you are here! \n DestiGo get the best recommendations for you</string>
+    <string name="exploreDestinations">Explore the world\'s best Destinations, plan your trips \n and find your next adventure with DestiGo</string>
+</resources>

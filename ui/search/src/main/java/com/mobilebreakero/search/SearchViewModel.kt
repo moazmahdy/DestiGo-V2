@@ -32,8 +32,10 @@ class SearchViewModel @Inject constructor(
             _searchResult.value = result
         }
     }
+
     private val _photo = MutableStateFlow<Response<List<PhotoDataItem?>>>(Response.Success(listOf()))
     val photo: StateFlow<Response<List<PhotoDataItem?>>> = _photo
+    var photoResult: Response<List<PhotoDataItem?>> = Response.Success(listOf())
 
     fun getPhoto(locationId: String) {
         viewModelScope.launch {
@@ -41,6 +43,7 @@ class SearchViewModel @Inject constructor(
                 _photo.value = Response.Loading
                 val result = photoUseCase.invoke(locationId)
                 _photo.value = result
+                photoResult = result
             } catch (e: Exception) {
                 _photo.value = Response.Failure(e)
             }

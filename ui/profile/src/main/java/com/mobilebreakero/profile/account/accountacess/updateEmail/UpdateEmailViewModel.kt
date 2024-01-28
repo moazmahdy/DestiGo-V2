@@ -21,9 +21,7 @@ class UpdateEmailViewModel @Inject constructor(private val useCase: AuthUseCase)
     var updateEmailResponse by mutableStateOf<UpdateEmailResponse>(Response.Success(false))
         private set
 
-    fun updateEmail(email: String) = viewModelScope.launch(
-        Dispatchers.IO
-    ) {
+    fun updateEmail(email: String) = viewModelScope.launch(Dispatchers.IO) {
         updateEmailResponse = Response.Loading
         updateEmailResponse = useCase.updateEmail(email)
     }

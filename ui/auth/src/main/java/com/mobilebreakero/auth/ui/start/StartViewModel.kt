@@ -26,8 +26,6 @@ class StartViewModel @Inject constructor(
 
     fun getAuthState() = useCase.getAuthState(viewModelScope)
 
-    val isEmailVerified get() = useCase.currentUser.invoke()?.isEmailVerified ?: false
-
     fun signInAnnonymously() = viewModelScope.launch {
         signInResponse = Response.Loading
         signInResponse = useCase.SignInAnnonymously()

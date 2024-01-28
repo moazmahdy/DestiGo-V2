@@ -1,29 +1,26 @@
 package com.mobilebreakero.destigo.di
 
 import android.content.Context
-import com.mobilebreakero.data.mapper.PlacesMapper
 import com.mobilebreakero.data.remote.TripApi
 import com.mobilebreakero.data.repoimpl.DetailsRepoImplementation
 import com.mobilebreakero.data.repoimpl.PhotoRepoImplementation
 import com.mobilebreakero.data.repoimpl.RecommededImple
 import com.mobilebreakero.data.repoimpl.SearchPlacesRepoImpl
-import com.mobilebreakero.data.repoimpl.SearchResultRepoImpl
 import com.mobilebreakero.domain.repo.AuthRepository
 import com.mobilebreakero.domain.repo.DetailsRepository
 import com.mobilebreakero.domain.repo.FireStoreRepository
 import com.mobilebreakero.domain.repo.PhotoRepository
 import com.mobilebreakero.domain.repo.PostsRepo
 import com.mobilebreakero.domain.repo.RecommendedTrips
-import com.mobilebreakero.domain.repo.SearchRepository
 import com.mobilebreakero.domain.repo.SearchResultRepo
 import com.mobilebreakero.domain.repo.TripsRepo
 import com.mobilebreakero.domain.usecase.DetailsUseCase
 import com.mobilebreakero.domain.usecase.GetPublicTripsUseCase
+import com.mobilebreakero.domain.usecase.GetReviewsUseCase
 import com.mobilebreakero.domain.usecase.PhotoUseCase
 import com.mobilebreakero.domain.usecase.RecommendedPlaceUseCase
 import com.mobilebreakero.domain.usecase.RecommendedUseCase
 import com.mobilebreakero.domain.usecase.SearchPlacesUseCase
-import com.mobilebreakero.domain.usecase.SearchResultUseCase
 import com.mobilebreakero.domain.usecase.UpdatePublicTripDate
 import com.mobilebreakero.domain.usecase.UpdatePublicTripDays
 import com.mobilebreakero.domain.usecase.auth.AuthUseCase
@@ -41,6 +38,8 @@ import com.mobilebreakero.domain.usecase.auth.SignOut
 import com.mobilebreakero.domain.usecase.auth.SignUpWithEmailAndPassword
 import com.mobilebreakero.domain.usecase.auth.UpdateEmail
 import com.mobilebreakero.domain.usecase.auth.UpdatePassword
+import com.mobilebreakero.domain.usecase.firestore.GetSavedPlaces
+import com.mobilebreakero.domain.usecase.firestore.GetSavedTrips
 import com.mobilebreakero.domain.usecase.firestore.IsTripFinished
 import com.mobilebreakero.domain.usecase.firestore.user.AddUser
 import com.mobilebreakero.domain.usecase.firestore.UserUseCase
@@ -69,7 +68,7 @@ import com.mobilebreakero.domain.usecase.firestore.trips.AddTrip
 import com.mobilebreakero.domain.usecase.firestore.trips.AddTripJournal
 import com.mobilebreakero.domain.usecase.firestore.trips.GetTrips
 import com.mobilebreakero.domain.usecase.firestore.TripsUseCase
-import com.mobilebreakero.domain.usecase.firestore.UpdateUserSaved
+import com.mobilebreakero.domain.usecase.firestore.user.UpdateUserSaved
 import com.mobilebreakero.domain.usecase.firestore.trips.UpdatePhoto
 import com.mobilebreakero.domain.usecase.firestore.trips.DeleteTrip
 import com.mobilebreakero.domain.usecase.firestore.trips.GetPublicTrips
@@ -124,8 +123,9 @@ object AppModule {
         updateUserInterestedPlaces = UpdateInterestedPlaces(repo),
         getInterestedPlaces = GetInterestedPlaces(repo),
         updateUserSaved = UpdateUserSaved(repo),
+        getSavedPlaces = GetSavedPlaces(repo),
+        getSavedTrips = GetSavedTrips(repo),
     )
-
 
     @Provides
     fun provideTripsUseCases(
@@ -151,12 +151,6 @@ object AppModule {
         isTripFinished = IsTripFinished(repo)
     )
 
-
-    @Provides
-    fun provideSearchRepo(api: TripApi, placesMapper: PlacesMapper): SearchRepository {
-        return SearchResultRepoImpl(api, placesMapper)
-    }
-
     @Provides
     fun providePostUseCase(
         repo: PostsRepo
@@ -170,11 +164,6 @@ object AppModule {
         getPostsByUserId = GetPostsById(repo),
         getPostDetails = GetPostDetails(repo)
     )
-
-    @Provides
-    fun provideSearchUseCase(repo: SearchRepository): SearchResultUseCase {
-        return SearchResultUseCase(repo)
-    }
 
     @Provides
     fun provideSearchPlacesRepo(api: TripApi): SearchResultRepo {
@@ -192,8 +181,8 @@ object AppModule {
     }
 
     @Provides
-    fun provideDetailsRepository(api: TripApi): DetailsRepository {
-        return DetailsRepoImplementation(api)
+    fun provideDetailsRepository(api: TripApi, context: Context): DetailsRepository {
+        return DetailsRepoImplementation(api, context)
     }
 
     @Provides
@@ -235,6 +224,10 @@ object AppModule {
     @Provides
     fun provideUpdateDatePUseCase(repo: RecommendedTrips): UpdatePublicTripDate {
         return UpdatePublicTripDate(repo)
+    }
+    @Provides
+    fun provideGetReviewsUseCase(repo: DetailsRepository): GetReviewsUseCase{
+        return GetReviewsUseCase(repo)
     }
 
     @Provides

@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -25,6 +27,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -34,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
+import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.home.R
 
 
@@ -51,6 +55,7 @@ fun PostItem(
     onCommentClick: () -> Unit,
     onProfileClick: () -> Unit,
     onShareClick: () -> Unit,
+    onSettingsClick: () -> Unit
 ) {
 
     val likeCount = remember { mutableIntStateOf(numberOfLike) }
@@ -99,7 +104,7 @@ fun PostItem(
                 ) {
                     Text(
                         text = name,
-                        fontSize = 15.sp,
+                        fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF4F80FF)
                     )
@@ -111,10 +116,18 @@ fun PostItem(
                             tint = Color(0xFF4F80FF)
                         )
                         Text(
-                            text = location
+                            text = location,
+                            fontSize = 9.sp
                         )
                     }
                 }
+                Spacer(modifier = Modifier.width(100.dp))
+                Icon(
+                    imageVector = Icons.Filled.Menu,
+                    contentDescription = "settings",
+                    modifier = Modifier.clickable { onSettingsClick() },
+                    tint = Color(0xFF4F80FF)
+                )
             }
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -133,6 +146,7 @@ fun PostItem(
                     .width(320.dp)
                     .height(280.dp)
                     .padding(3.dp)
+                    .align(CenterHorizontally)
                     .clip(
                         RoundedCornerShape(
                             bottomEnd = 12.dp,
@@ -141,6 +155,7 @@ fun PostItem(
                             topEnd = 5.dp
                         )
                     ),
+                loading = { LoadingIndicator() },
                 contentScale = ContentScale.FillBounds
             )
             Spacer(modifier = Modifier.height(8.dp))

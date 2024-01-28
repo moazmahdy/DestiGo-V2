@@ -47,6 +47,7 @@ import coil.compose.SubcomposeAsyncImage
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.common_ui.components.ShowDatePickerDialog
 import com.mobilebreakero.common_ui.components.calculateEndDate
 import com.mobilebreakero.data.repoimpl.GenerateRandomIdNumber
 import com.mobilebreakero.details.components.ItemsChip
@@ -55,7 +56,6 @@ import com.mobilebreakero.details.components.TripCheckList
 import com.mobilebreakero.details.components.TripDetailsCard
 import com.mobilebreakero.details.components.TripImages
 import com.mobilebreakero.details.components.TripJournal
-import com.mobilebreakero.details.publicTrips.ShowDatePickerDialog
 import com.mobilebreakero.domain.model.Trip
 import com.mobilebreakero.domain.util.DataUtils
 import com.mobilebreakero.domain.util.Response
@@ -70,7 +70,7 @@ fun TripDetailsScreen(
     navController: NavController
 ) {
 
-    LaunchedEffect(tripId) {
+    LaunchedEffect(tripId){
         viewModel.getTripDetailsResult(tripId)
     }
 

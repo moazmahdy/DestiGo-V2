@@ -78,7 +78,6 @@ fun AddPlacesScreen(
     val searchResults by viewModel.searchResult.collectAsState()
     var placeName by remember { mutableStateOf("") }
     var placeAddress by remember { mutableStateOf("") }
-    var placePhoto by remember { mutableStateOf("") }
     var placeTripId by remember { mutableStateOf("") }
 
     Column(
@@ -269,6 +268,7 @@ fun SearchTextField(
 ) {
     var textFieldText by remember { mutableStateOf(text) }
 
+    val containerColor = Color(0xFFEFEEEE)
     TextField(
         value = textFieldText,
         onValueChange = {
@@ -285,12 +285,14 @@ fun SearchTextField(
                 clip = true
             ),
         shape = RoundedCornerShape(22.dp),
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = Color(0xFFEFEEEE),
+        colors = TextFieldDefaults.colors(
             disabledTextColor = Color.Transparent,
+            focusedContainerColor = containerColor,
+            unfocusedContainerColor = containerColor,
+            disabledContainerColor = containerColor,
             focusedIndicatorColor = Color.Black,
             unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
+            disabledIndicatorColor = Color.Transparent,
         ),
         label = { Text(text = label) },
         maxLines = 1,

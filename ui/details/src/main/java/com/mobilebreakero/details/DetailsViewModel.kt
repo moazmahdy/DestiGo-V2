@@ -1,5 +1,6 @@
 package com.mobilebreakero.details
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -7,14 +8,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobilebreakero.domain.model.DetailsResponse
 import com.mobilebreakero.domain.model.PhotoDataItem
+import com.mobilebreakero.domain.model.ReviewItem
 import com.mobilebreakero.domain.model.Trip
 import com.mobilebreakero.domain.model.TripsItem
 import com.mobilebreakero.domain.repo.getPublicTripDetailsResponse
 import com.mobilebreakero.domain.repo.getTripDetailsResponse
+import com.mobilebreakero.domain.repo.getTripJournalDetailsResponse
 import com.mobilebreakero.domain.repo.updatePlacesResponse
 import com.mobilebreakero.domain.repo.updateTripResponse
 import com.mobilebreakero.domain.usecase.DetailsUseCase
 import com.mobilebreakero.domain.usecase.GetPublicTripsUseCase
+import com.mobilebreakero.domain.usecase.GetReviewsUseCase
 import com.mobilebreakero.domain.usecase.PhotoUseCase
 import com.mobilebreakero.domain.usecase.UpdatePublicTripDate
 import com.mobilebreakero.domain.usecase.UpdatePublicTripDays
@@ -33,7 +37,8 @@ class DetailsViewModel @Inject constructor(
     private val tripsUseCase: TripsUseCase,
     private val getPublicTripsUseCase: GetPublicTripsUseCase,
     private val updatePublicTripDays: UpdatePublicTripDays,
-    private val updatePublicTripDate: UpdatePublicTripDate
+    private val updatePublicTripDate: UpdatePublicTripDate,
+    private val getReviewsUseCase: GetReviewsUseCase,
 ) : ViewModel() {
 
     var addPhotoResponse by mutableStateOf<updateTripResponse>(Response.Success(false))
@@ -273,4 +278,21 @@ class DetailsViewModel @Inject constructor(
             }
         }
     }
+
+
+    var getReviews by mutableStateOf(listOf(ReviewItem()))
+        private set
+
+    fun getReviews() {
+        viewModelScope.launch {
+            return@launch try {
+                val result = getReviewsUseCase.invoke()
+                Log.e("getReviews", result.toString())
+                getReviews = result
+            } catch (e: Exception) {
+                getReviews = emptyList()
+            }
+        }
+    }
+
 }

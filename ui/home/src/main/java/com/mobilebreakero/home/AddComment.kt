@@ -9,11 +9,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -41,7 +39,6 @@ import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.domain.model.AppUser
 import com.mobilebreakero.viewModel.HomeViewModel
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddCommentScreen(
@@ -61,7 +58,6 @@ fun AddCommentScreen(
         },
         id = firebaseUser?.uid ?: "",
     )
-
 
     Box(
         modifier = Modifier

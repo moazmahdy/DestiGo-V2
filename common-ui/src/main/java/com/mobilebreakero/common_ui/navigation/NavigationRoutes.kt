@@ -43,7 +43,7 @@ object NavigationRoutes {
     const val POSTS_DETAILS = "postDetails/{postId}"
     const val TRIP_DETAILS = "tripDetails/{tripId}"
     const val ADD_JOURNAL = "addTripJournal/{tripId}"
-    const val TRIP_JOURNAL_DETAILS = "tripJournalDetails/{tripId}"
+    const val TRIP_JOURNAL_DETAILS = "JournalDetails/{tripId}"
     const val PUBLIC_TRIP_DETAILS = "publicTripDetails/{tripId}"
 
 }

@@ -17,9 +17,10 @@ fun DetailsScreen(
     viewModel: DetailsViewModel = hiltViewModel()
 ) {
 
-    LaunchedEffect(key1 = Unit) {
+    LaunchedEffect(key1 = locationId) {
         viewModel.getPhoto(locationId)
         viewModel.getDetails(locationId)
+        viewModel.getReviews()
     }
 
     val photos by viewModel.photo.collectAsState()
@@ -32,7 +33,13 @@ fun DetailsScreen(
                 is Response.Success -> {
                     val detailsResponse =
                         (details as Response.Success<DetailsResponse>).data
-                    DetailsContent(photos = results, detailsResponse = detailsResponse)
+                    val reviewsResponse = viewModel.getReviews
+
+                    DetailsContent(
+                        photos = results,
+                        detailsResponse = detailsResponse,
+                        reviewsResponse
+                    )
                 }
 
                 is Response.Failure -> {

@@ -33,6 +33,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mobilebreakero.profile.account.accountacess.updatepassword.PasswordResetViewModel
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.CHOOSE_NEW_PASSWORD
+import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SCREEN
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.component.AuthTextField
 
@@ -107,7 +108,7 @@ fun SendConfirmationCodeScreenContent(
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.clickable {
-                navController.navigate(route = "StartAuthScreen")
+                navController.navigate(route = PROFILE_SCREEN)
             }
         )
     }
@@ -115,7 +116,7 @@ fun SendConfirmationCodeScreenContent(
     SendEmailForResettingPassword(navController = navController)
 }
 
-fun CheckConfirmationCode(confirmationCode: Int, context: Context) : Boolean {
+fun CheckConfirmationCode(confirmationCode: Int, context: Context): Boolean {
     return if (confirmationCode == ConfirmationCode) {
         Toast.makeText(context, "Confirmation Successfully", Toast.LENGTH_SHORT).show()
         true

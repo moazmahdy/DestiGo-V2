@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.domain.model.Post
+import com.mobilebreakero.domain.repo.addPostResponse
 import com.mobilebreakero.domain.repo.postResponse
 import com.mobilebreakero.domain.repo.updatePostResponse
 import com.mobilebreakero.domain.usecase.firestore.PostUseCase
@@ -53,7 +54,7 @@ class YourPostsViewModel @Inject constructor(
     }
 
 
-    var updateLikesResponse by mutableStateOf<updatePostResponse>(Response.Success(false))
+    private var updateLikesResponse by mutableStateOf<updatePostResponse>(Response.Success(false))
         private set
 
     fun likePost(
@@ -71,5 +72,55 @@ class YourPostsViewModel @Inject constructor(
             }
         }
     }
+
+    var deletePostResponse by mutableStateOf<updatePostResponse>(Response.Success(false))
+        private set
+
+    fun deletePost(postId: String) {
+        viewModelScope.launch {
+            try {
+                deletePostResponse = Response.Loading
+                deletePostResponse = useCase.deletePost(postId)
+            } catch (e: Exception) {
+                deletePostResponse = Response.Failure(e)
+            }
+        }
+    }
+
+    var sharePostResponse by mutableStateOf<addPostResponse>(Response.Success(false))
+        private set
+
+    fun sharePost(postId: String, userId: String, userName: String) {
+        viewModelScope.launch {
+            try {
+                sharePostResponse = Response.Loading
+                sharePostResponse =
+                    useCase.sharePost(postId = postId, userId = userId, userName = userName)
+            } catch (e: Exception) {
+                sharePostResponse = Response.Failure(e)
+            }
+        }
+    }
+
+
+    var addCommentResponse by mutableStateOf<updatePostResponse>(Response.Success(false))
+        private set
+
+    fun addComment(postId: String, comment: String, userId: String, userName: String) {
+        viewModelScope.launch {
+            try {
+                addCommentResponse = Response.Loading
+                addCommentResponse = useCase.addComment(
+                    id = postId,
+                    comment = comment,
+                    userId = userId,
+                    userName = userName
+                )
+            } catch (e: Exception) {
+                addCommentResponse = Response.Failure(e)
+            }
+        }
+    }
+
 
 }
