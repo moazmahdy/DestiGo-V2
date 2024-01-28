@@ -35,6 +35,11 @@ android {
             }
         }
     }
+
+    compileOptions {
+        sourceCompatibility = Versions.JAVA
+        targetCompatibility = Versions.JAVA
+    }
 }
 
 dependencies {
