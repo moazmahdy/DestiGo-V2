@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -27,7 +28,6 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.mobilebreakero.auth.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthTextField(
     text: String,
@@ -35,7 +35,7 @@ fun AuthTextField(
     label: String
 ) {
     var textFieldText by remember { mutableStateOf(text) }
-
+    val containerColor = Color(0xFFEFEEEE)
     TextField(
         value = textFieldText,
         onValueChange = {
@@ -52,12 +52,14 @@ fun AuthTextField(
                 clip = true
             ),
         shape = RoundedCornerShape(22.dp),
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = Color(0xFFEFEEEE),
+        colors = TextFieldDefaults.colors(
             disabledTextColor = Color.Transparent,
+            focusedContainerColor = containerColor,
+            unfocusedContainerColor = containerColor,
+            disabledContainerColor = containerColor,
             focusedIndicatorColor = Color.Black,
             unfocusedIndicatorColor = Color.Transparent,
-            disabledIndicatorColor = Color.Transparent
+            disabledIndicatorColor = Color.Transparent,
         ),
         label = { Text(text = label) },
         maxLines = 1

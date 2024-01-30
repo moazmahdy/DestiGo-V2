@@ -23,7 +23,7 @@ import com.mobilebreakero.auth.ui.common.components.AuthContent
 import com.mobilebreakero.auth.ui.common.components.AuthTextField
 import com.mobilebreakero.auth.ui.common.components.PasswordTextField
 import com.mobilebreakero.auth.ui.signup.SignUpViewModel
-import com.mobilebreakero.domain.util.Utils.Companion.showMessage
+import com.mobilebreakero.auth_domain.util.Utils.Companion.showMessage
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.EMAIL_VERIFICATION_SCREEN
 
 @Composable

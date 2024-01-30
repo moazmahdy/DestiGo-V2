@@ -36,10 +36,10 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.model.Post
-import com.mobilebreakero.domain.repo.postResponse
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.Post
+import com.mobilebreakero.auth_domain.repo.postResponse
+import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.home.components.PostItem
 import com.mobilebreakero.home.components.ProfileImage
 import com.mobilebreakero.viewModel.HomeViewModel

@@ -33,8 +33,8 @@ import com.mobilebreakero.common_ui.components.CoilImage
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
-import com.mobilebreakero.domain.model.Trip
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.Trip
+import com.mobilebreakero.auth_domain.util.Response
 
 
 @Composable

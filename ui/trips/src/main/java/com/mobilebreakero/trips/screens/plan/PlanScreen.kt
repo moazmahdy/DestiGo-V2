@@ -47,10 +47,10 @@ import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.model.Trip
-import com.mobilebreakero.domain.model.TripsItem
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.Trip
+import com.mobilebreakero.auth_domain.model.TripsItem
+import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.trips.TripsViewModel
 import com.mobilebreakero.trips.components.CreateTripButton
 import com.mobilebreakero.trips.components.TripItem

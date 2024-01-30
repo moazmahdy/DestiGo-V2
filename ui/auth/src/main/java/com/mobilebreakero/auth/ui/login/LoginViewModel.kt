@@ -5,11 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobilebreakero.domain.typealiases.SendPasswordResetEmailResponse
-import com.mobilebreakero.domain.typealiases.SignInResponse
-import com.mobilebreakero.domain.usecase.auth.AuthUseCase
-import com.mobilebreakero.domain.util.Response.Success
-import com.mobilebreakero.domain.util.Response.Loading
+import com.mobilebreakero.auth_domain.typealiases.SendPasswordResetEmailResponse
+import com.mobilebreakero.auth_domain.typealiases.SignInResponse
+import com.mobilebreakero.auth_domain.usecase.AuthUseCase
+import com.mobilebreakero.auth_domain.util.Response.Success
+import com.mobilebreakero.auth_domain.util.Response.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -7,9 +7,9 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.details.components.DetailsContent
-import com.mobilebreakero.domain.model.DetailsResponse
-import com.mobilebreakero.domain.model.PhotoDataItem
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.DetailsResponse
+import com.mobilebreakero.auth_domain.model.PhotoDataItem
+import com.mobilebreakero.auth_domain.util.Response
 
 @Composable
 fun DetailsScreen(

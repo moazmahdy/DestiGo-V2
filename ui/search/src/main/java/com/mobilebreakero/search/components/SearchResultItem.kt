@@ -22,13 +22,12 @@ import androidx.compose.ui.layout.ContentScale.Companion.FillBounds
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.domain.model.DataItem
-import com.mobilebreakero.domain.model.PhotoDataItem
+import com.mobilebreakero.auth_domain.model.DataItem
+import com.mobilebreakero.auth_domain.model.PhotoDataItem
 
 
 @Composable

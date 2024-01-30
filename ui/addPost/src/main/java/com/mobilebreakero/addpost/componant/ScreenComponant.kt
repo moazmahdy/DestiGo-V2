@@ -51,8 +51,8 @@ import com.mobilebreakero.addpost.R
 import com.mobilebreakero.addpost.viewmodel.AddPostViewModel
 import com.mobilebreakero.common_ui.components.MapView
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.HOME_SCREEN
-import com.mobilebreakero.domain.model.Post
-import com.mobilebreakero.domain.util.DataUtils
+import com.mobilebreakero.auth_domain.model.Post
+import com.mobilebreakero.auth_domain.util.DataUtils
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

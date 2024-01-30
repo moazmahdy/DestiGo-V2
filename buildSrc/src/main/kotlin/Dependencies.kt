@@ -1,7 +1,9 @@
+import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.DependencyHandlerScope
 
 object Dependencies {
+
     object Kotlin {
         const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.KOTLIN}"
         const val KOTLIN_REFLECT = "org.jetbrains.kotlin:kotlin-reflect:${Versions.KOTLIN}"
@@ -19,7 +21,18 @@ object Dependencies {
         const val GSON = "com.google.code.gson:gson:${Versions.Google.GSON}"
         const val LOCATION =
             "com.google.android.gms:play-services-location:${Versions.Google.LOCATION}"
-        const val SERVICES = "com.google.android.gms:play-services-auth:${Versions.Google.SERVICES}"
+        const val SERVICES = "com.google.android.gms:play-services-maps:${Versions.Google.SERVICES}"
+        const val SCAN_SERVICES =
+            "com.google.android.gms:play-services-mlkit-barcode-scanning:${Versions.Google.SERVICES}"
+    }
+
+    object Camera {
+        const val CAMERAX = "com.google.zxing:core:${Versions.Camera.CAMERAX}"
+        const val CAMERA = "androidx.camera:camera-camera2:${Versions.Camera.CAMERA_CORE}"
+        const val LIFECYCLE = "androidx.camera:camera-lifecycle:${Versions.Camera.CAMERA_CORE}"
+        const val VIEW = "androidx.camera:camera-view:${Versions.Camera.CAMERA_VIEW}"
+        const val CAMERA_EMBEDDED =
+            "com.journeyapps:zxing-android-embedded:${Versions.Camera.CAMERA_EMBED}"
     }
 
     object AndroidX {
@@ -35,16 +48,13 @@ object Dependencies {
     }
 
     object Firebase {
-        const val FIRESTORE =
-            "com.google.firebase:firebase-firestore:${Versions.Firebase.FIRESTORE}"
         const val FIREBASE_BOM =
             "com.google.firebase:firebase-bom:${Versions.Firebase.FIREBASE_BOM}"
         const val FIREBASE_AUTH =
-            "com.google.firebase:firebase-auth-ktx:${Versions.Firebase.FIREBASE_AUTH}"
-        const val FIREBASE_AUTH_KTX =
-            "com.google.firebase:firebase-auth-ktx:${Versions.Firebase.FIREBASE_AUTH}"
-        const val FIRESTORE_KTX =
-            "com.google.firebase:firebase-firestore-ktx:${Versions.Firebase.FIRESTORE}"
+            "com.google.firebase:firebase-auth"
+        const val FIRESTORE =
+            "com.google.firebase:firebase-firestore"
+        const val FIREBASE_STORAGE = "com.google.firebase:firebase-storage"
     }
 
     object Network {
@@ -61,9 +71,8 @@ object Dependencies {
             "com.squareup.okhttp3:logging-interceptor:${Versions.Network.LOGGINIG_INTERCEPTOR}"
         const val LOGGING = "com.squareup.okhttp3:logging-interceptor:${Versions.Network.LOGGING}"
         const val COIL = "io.coil-kt:coil-compose:${Versions.Network.COIL}"
-        const val LEAKCANARY =
-            "com.squareup.leakcanary:leakcanary-android:${Versions.Network.LEAKCANARY}"
-        const val ROOM = "androidx.room:room-runtime:${Versions.Network.ROOM}"
+        const val CONVERTER_GSON =
+            "com.squareup.retrofit2:converter-gson:${Versions.Network.RETROFIT}"
     }
 
     object Compose {
@@ -132,6 +141,14 @@ object Dependencies {
         testImplementation(Test.Unit.JUNIT)
     }
 
+    fun DependencyHandlerScope.camera() {
+        api(Camera.CAMERAX)
+        api(Camera.CAMERA)
+        api(Camera.LIFECYCLE)
+        api(Camera.VIEW)
+        api(Camera.CAMERA_EMBEDDED)
+    }
+
     fun DependencyHandlerScope.compose() {
         api(Compose.COMPOSE_ACTIVITY)
         api(Compose.COMPOSE_BOOM)
@@ -146,12 +163,11 @@ object Dependencies {
         testImplementation(Test.Unit.JUNIT)
     }
 
+
     fun DependencyHandlerScope.firebase() {
-        api(Firebase.FIREBASE_BOM)
         api(Firebase.FIREBASE_AUTH)
         api(Firebase.FIRESTORE)
-        api(Firebase.FIRESTORE_KTX)
-        api(Firebase.FIREBASE_AUTH_KTX)
+        api(Firebase.FIREBASE_STORAGE)
     }
 
     fun DependencyHandlerScope.google() {
@@ -159,14 +175,11 @@ object Dependencies {
         api(Google.GSON)
         api(Google.LOCATION)
         api(Google.SERVICES)
+        api(Google.SCAN_SERVICES)
     }
 
     fun DependencyHandlerScope.navigation() {
         api(Compose.COMPOSE_NAVIGATION)
-    }
-
-    fun DependencyHandlerScope.room() {
-        api(Network.ROOM)
     }
 
     fun DependencyHandlerScope.dataStore() {
@@ -189,7 +202,7 @@ object Dependencies {
         api(Network.LOGGINIG_INTERCEPTOR)
         api(Network.LOGGING)
         api(Network.COIL)
-        api(Network.LEAKCANARY)
+        api(Network.CONVERTER_GSON)
     }
 
     fun DependencyHandlerScope.kotlinStubs() {
@@ -198,3 +211,20 @@ object Dependencies {
     }
 
 }
+
+
+fun DependencyHandler.implementation(dependencyNotation: String): Dependency? =
+    add("implementation", dependencyNotation)
+
+fun DependencyHandler.api(dependencyNotation: String): Dependency? =
+    add("api", dependencyNotation)
+
+fun DependencyHandler.kapt(dependencyNotation: String): Dependency? =
+    add("kapt", dependencyNotation)
+
+fun DependencyHandler.testImplementation(dependencyNotation: String): Dependency? =
+    add("testImplementation", dependencyNotation)
+
+fun DependencyHandler.androidTestImplementation(dependencyNotation: String): Dependency? =
+    add("androidTestImplementation", dependencyNotation)
+

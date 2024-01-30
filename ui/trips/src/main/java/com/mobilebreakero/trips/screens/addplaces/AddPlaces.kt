@@ -49,8 +49,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobilebreakero.common_ui.components.AnimateIcon
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.TRIP_DETAILS
-import com.mobilebreakero.data.repoimpl.GenerateRandomIdNumber
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
+import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.trips.TripsViewModel
 import com.mobilebreakero.trips.screens.plan.selectedLocationpass
 import kotlinx.coroutines.CoroutineDispatcher

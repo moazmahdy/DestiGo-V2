@@ -38,7 +38,7 @@ import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SETTINGS
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SIGN_IN_BEFORE_UPDATE
-import com.mobilebreakero.domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.component.ProfileImage
 

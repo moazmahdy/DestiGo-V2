@@ -47,8 +47,8 @@ import com.mobilebreakero.common_ui.components.MapView
 import com.mobilebreakero.common_ui.components.ShowDatePickerDialog
 import com.mobilebreakero.common_ui.components.calculateEndDate
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.TRIPS_SCREEN
-import com.mobilebreakero.domain.model.Trip
-import com.mobilebreakero.domain.util.DataUtils
+import com.mobilebreakero.auth_domain.model.Trip
+import com.mobilebreakero.auth_domain.util.DataUtils
 import com.mobilebreakero.trips.TripsViewModel
 import com.mobilebreakero.trips.components.CreateTripButton
 

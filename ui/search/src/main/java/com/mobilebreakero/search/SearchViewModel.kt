@@ -2,11 +2,11 @@ package com.mobilebreakero.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobilebreakero.domain.model.DataItem
-import com.mobilebreakero.domain.model.PhotoDataItem
-import com.mobilebreakero.domain.usecase.PhotoUseCase
-import com.mobilebreakero.domain.usecase.SearchPlacesUseCase
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.DataItem
+import com.mobilebreakero.auth_domain.model.PhotoDataItem
+import com.mobilebreakero.auth_domain.usecase.PhotoUseCase
+import com.mobilebreakero.auth_domain.usecase.SearchPlacesUseCase
+import com.mobilebreakero.auth_domain.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

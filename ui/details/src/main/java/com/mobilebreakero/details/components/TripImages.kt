@@ -45,11 +45,9 @@ import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
 import com.mobilebreakero.details.ViewImage
-import com.mobilebreakero.common_ui.extensions.rememberZoomState
-import com.mobilebreakero.common_ui.extensions.zoom
 import com.mobilebreakero.details.loadProgress
 import com.mobilebreakero.details.uploadImageToStorage
-import com.mobilebreakero.domain.model.Trip
+import com.mobilebreakero.auth_domain.model.Trip
 import kotlinx.coroutines.launch
 
 

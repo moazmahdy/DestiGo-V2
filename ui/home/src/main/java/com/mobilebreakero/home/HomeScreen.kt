@@ -64,11 +64,11 @@ import com.mobilebreakero.common_ui.components.VSpacer
 import com.mobilebreakero.common_ui.design_system.Borders
 import com.mobilebreakero.common_ui.design_system.fontSize
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.CREATE_TRIP
-import com.mobilebreakero.data.repoimpl.GenerateRandomIdNumber
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.model.Post
-import com.mobilebreakero.domain.model.TripsItem
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.Post
+import com.mobilebreakero.auth_domain.model.TripsItem
+import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.home.components.AddButtonDesign
 import com.mobilebreakero.home.components.ForYouItem
 import com.mobilebreakero.home.components.PostItem

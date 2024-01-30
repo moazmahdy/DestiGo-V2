@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.AppUser
 
 @Composable
 fun NameSection(modifier: Modifier = Modifier) {

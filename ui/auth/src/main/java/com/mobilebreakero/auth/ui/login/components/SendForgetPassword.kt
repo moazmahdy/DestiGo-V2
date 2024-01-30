@@ -24,7 +24,7 @@ import com.mobilebreakero.auth.ui.common.components.AuthTextField
 import com.mobilebreakero.auth.ui.login.LoginViewModel
 import com.mobilebreakero.common_ui.components.AuthButton
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SIGN_IN_SCREEN
-import com.mobilebreakero.domain.util.Utils
+import com.mobilebreakero.auth_domain.util.Utils
 
 
 @Composable

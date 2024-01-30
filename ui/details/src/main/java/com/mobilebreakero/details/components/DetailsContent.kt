@@ -39,9 +39,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.domain.model.DetailsResponse
-import com.mobilebreakero.domain.model.PhotoDataItem
-import com.mobilebreakero.domain.model.ReviewItem
+import com.mobilebreakero.auth_domain.model.DetailsResponse
+import com.mobilebreakero.auth_domain.model.PhotoDataItem
+import com.mobilebreakero.auth_domain.model.ReviewItem
 
 
 @OptIn(ExperimentalFoundationApi::class)

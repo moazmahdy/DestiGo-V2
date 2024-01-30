@@ -16,7 +16,7 @@
           </compositeBuild>
         </compositeConfiguration>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -26,10 +26,34 @@
             <option value="$PROJECT_DIR$/auth/domain" />
             <option value="$PROJECT_DIR$/auth/ui" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/chat" />
+            <option value="$PROJECT_DIR$/chat/chat_data" />
+            <option value="$PROJECT_DIR$/chat/chat_domain" />
+            <option value="$PROJECT_DIR$/chat/chat_ui" />
             <option value="$PROJECT_DIR$/common-ui" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/core/core-data" />
             <option value="$PROJECT_DIR$/core/core-domain" />
+            <option value="$PROJECT_DIR$/core/core_ui" />
+            <option value="$PROJECT_DIR$/details" />
+            <option value="$PROJECT_DIR$/details/details_data" />
+            <option value="$PROJECT_DIR$/details/details_domain" />
+            <option value="$PROJECT_DIR$/details/details_ui" />
+            <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/posts" />
+            <option value="$PROJECT_DIR$/posts/posts_data" />
+            <option value="$PROJECT_DIR$/posts/posts_domain" />
+            <option value="$PROJECT_DIR$/posts/posts_ui" />
+            <option value="$PROJECT_DIR$/profile" />
+            <option value="$PROJECT_DIR$/profile/profile_data" />
+            <option value="$PROJECT_DIR$/profile/profile_domain" />
+            <option value="$PROJECT_DIR$/profile/profile_ui" />
+            <option value="$PROJECT_DIR$/splash" />
+            <option value="$PROJECT_DIR$/splash/splash_ui" />
+            <option value="$PROJECT_DIR$/trips" />
+            <option value="$PROJECT_DIR$/trips/trips_data" />
+            <option value="$PROJECT_DIR$/trips/trips_domain" />
+            <option value="$PROJECT_DIR$/trips/trips_ui" />
             <option value="$PROJECT_DIR$/ui" />
             <option value="$PROJECT_DIR$/ui/Interestedplaces" />
             <option value="$PROJECT_DIR$/ui/addPost" />

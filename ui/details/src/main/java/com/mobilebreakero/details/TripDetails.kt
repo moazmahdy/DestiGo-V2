@@ -49,16 +49,16 @@ import com.google.firebase.storage.ktx.storage
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.common_ui.components.ShowDatePickerDialog
 import com.mobilebreakero.common_ui.components.calculateEndDate
-import com.mobilebreakero.data.repoimpl.GenerateRandomIdNumber
+import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
 import com.mobilebreakero.details.components.ItemsChip
 import com.mobilebreakero.details.components.PlacesToVisit
 import com.mobilebreakero.details.components.TripCheckList
 import com.mobilebreakero.details.components.TripDetailsCard
 import com.mobilebreakero.details.components.TripImages
 import com.mobilebreakero.details.components.TripJournal
-import com.mobilebreakero.domain.model.Trip
-import com.mobilebreakero.domain.util.DataUtils
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.Trip
+import com.mobilebreakero.auth_domain.util.DataUtils
+import com.mobilebreakero.auth_domain.util.Response
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

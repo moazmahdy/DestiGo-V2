@@ -14,7 +14,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.mobilebreakero.common_ui.components.CoilImage
-import com.mobilebreakero.domain.model.TripsItem
+import com.mobilebreakero.auth_domain.model.TripsItem
 
 
 @Composable

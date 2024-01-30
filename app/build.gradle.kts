@@ -6,13 +6,13 @@ import Dependencies.google
 import Dependencies.hilt
 import Dependencies.coroutines
 import Dependencies.firebase
-
-plugins {
+import Versions
+plugins{
     id(Plugins.ANDROID_APPLICATION)
     id(Plugins.KOTLIN_ANDROID)
     id(Plugins.KOTLIN_KAPT)
     id(Plugins.HILT)
-    id(Plugins.GOOGLE_SERVICES)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -22,11 +22,11 @@ android {
         multiDexEnabled = true
         minSdk = (Versions.App.MIN_SDK)
         targetSdk = (Versions.App.TARGET_SDK)
-        testInstrumentationRunner = AndroidConstants.TEST_RUNNER
+        testInstrumentationRunner = BuildConfig.TEST_RUNNER
         versionCode = (Versions.App.VERSION_CODE)
         versionName = (Versions.App.VERSION_NAME)
         buildTypes {
-            getByName(AndroidConstants.BuildTypes.DEBUG) {
+            getByName(BuildConfig.BuildTypes.DEBUG) {
                 isMinifyEnabled = false
                 proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -35,14 +35,24 @@ android {
             }
         }
     }
-
+    buildFeatures {
+        compose = true
+    }
     compileOptions {
         sourceCompatibility = Versions.JAVA
         targetCompatibility = Versions.JAVA
     }
+    kotlinOptions {
+        jvmTarget = Versions.JAVA.toString()
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Versions.Compose.COMPOSE
+    }
 }
 
 dependencies {
+    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+
     compose()
     design()
     retrofit()
@@ -64,3 +74,4 @@ dependencies {
     implementation(project(Modules.Ui.AUTH))
     implementation(project(Modules.Ui.NAVIGATION))
 }
+

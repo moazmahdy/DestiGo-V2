@@ -55,8 +55,8 @@ import com.mobilebreakero.details.R
 import com.mobilebreakero.details.components.ElevatedButton
 import com.mobilebreakero.details.components.ItemsChip
 import com.mobilebreakero.details.components.TripDetailsCard
-import com.mobilebreakero.domain.model.TripsItem
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.TripsItem
+import com.mobilebreakero.auth_domain.util.Response
 
 
 @RequiresApi(Build.VERSION_CODES.O)

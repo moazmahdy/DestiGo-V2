@@ -3,8 +3,8 @@ package com.mobilebreakero.common_ui
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.domain.repo.userResponse
-import com.mobilebreakero.domain.usecase.firestore.UserUseCase
+import com.mobilebreakero.auth_domain.repo.userResponse
+import com.mobilebreakero.auth_domain.usecase.firestore.UserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

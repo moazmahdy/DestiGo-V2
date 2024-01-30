@@ -71,9 +71,9 @@ import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.common_ui.extensions.rememberZoomState
 import com.mobilebreakero.common_ui.extensions.zoom
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.model.Post
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.Post
+import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.home.components.ProfileImage
 import com.mobilebreakero.viewModel.HomeViewModel
 import kotlinx.coroutines.DelicateCoroutinesApi

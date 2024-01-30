@@ -34,10 +34,10 @@ import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.CoilImage
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.model.RecommendedPlaceItem
-import com.mobilebreakero.domain.model.TripsItem
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.RecommendedPlaceItem
+import com.mobilebreakero.auth_domain.model.TripsItem
+import com.mobilebreakero.auth_domain.util.Response
 
 
 @Composable

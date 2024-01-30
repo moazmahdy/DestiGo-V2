@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,10 +19,10 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.model.Trip
-import com.mobilebreakero.domain.model.TripsItem
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.Trip
+import com.mobilebreakero.auth_domain.model.TripsItem
+import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.profile.yourtrips.YourTripsViewModel
 
 @Composable

@@ -32,9 +32,9 @@ import com.mobilebreakero.common_ui.components.AuthButton
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.ACCOUNT_ACCESS_SETTINGS
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SEND_CONFIRMATION_CODE
-import com.mobilebreakero.domain.util.Response
-import com.mobilebreakero.domain.util.Utils
-import com.mobilebreakero.domain.util.Utils.Companion.showMessage
+import com.mobilebreakero.auth_domain.util.Response
+import com.mobilebreakero.auth_domain.util.Utils
+import com.mobilebreakero.auth_domain.util.Utils.Companion.showMessage
 import com.mobilebreakero.profile.component.AuthTextField
 import com.mobilebreakero.profile.component.PasswordTextField
 

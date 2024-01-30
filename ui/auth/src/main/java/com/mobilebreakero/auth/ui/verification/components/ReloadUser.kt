@@ -8,10 +8,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mobilebreakero.auth.ui.common.components.MainViewModel
-import com.mobilebreakero.domain.util.Response.Failure
-import com.mobilebreakero.domain.util.Response.Loading
-import com.mobilebreakero.domain.util.Response.Success
-import com.mobilebreakero.domain.util.Utils.Companion.print
+import com.mobilebreakero.auth_domain.util.Response.Failure
+import com.mobilebreakero.auth_domain.util.Response.Loading
+import com.mobilebreakero.auth_domain.util.Response.Success
+import com.mobilebreakero.auth_domain.util.Utils.Companion.print
 
 @Composable
 fun ReloadUser(

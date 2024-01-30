@@ -1,6 +1,7 @@
 [versions]
 agp = "8.0.2"
 core = "1.5.0"
+google-google-services = "4.4.0"
 gradle = "7.3.1"
 hilt-android-gradle-plugin = "2.44"
 kotlin = "1.8.10"
@@ -44,6 +45,7 @@ google-location = "21.0.1"
 accompanist-navigationAnimation = { group = "com.google.accompanist", name = "accompanist-navigation-animation", version.ref = "accompanist" }
 androidx-core = { module = "androidx.test:core", version.ref = "core" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+gms-google-services = { module = "com.google.gms:google-services", version.ref = "google-google-services" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt-android-gradle-plugin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

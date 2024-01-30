@@ -4,11 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mobilebreakero.common_ui.MainViewModel
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.util.DataUtils
-import com.mobilebreakero.domain.util.Response.Failure
-import com.mobilebreakero.domain.util.Response.Loading
-import com.mobilebreakero.domain.util.Response.Success
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.util.DataUtils
+import com.mobilebreakero.auth_domain.util.Response.Failure
+import com.mobilebreakero.auth_domain.util.Response.Loading
+import com.mobilebreakero.auth_domain.util.Response.Success
 
 @Composable
 fun GetUserFromFireStore(

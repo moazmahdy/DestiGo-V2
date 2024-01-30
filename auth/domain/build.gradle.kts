@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.mobilebreakero.domain"
+    namespace = "com.mobilebreakero.auth_domain"
 }
 
 dependencies {

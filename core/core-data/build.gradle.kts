@@ -1,3 +1,5 @@
+import Plugins
+
 plugins {
     id(Plugins.COMMON)
 }

@@ -5,10 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobilebreakero.domain.model.Post
-import com.mobilebreakero.domain.repo.addPostResponse
-import com.mobilebreakero.domain.usecase.firestore.PostUseCase
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.Post
+import com.mobilebreakero.auth_domain.repo.addPostResponse
+import com.mobilebreakero.auth_domain.usecase.firestore.PostUseCase
+import com.mobilebreakero.auth_domain.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

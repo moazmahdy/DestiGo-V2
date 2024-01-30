@@ -44,11 +44,11 @@ import com.mobilebreakero.details.components.DetailsCard
 import com.mobilebreakero.details.components.ItemsChip
 import com.mobilebreakero.details.components.ReviewItemCard
 import com.mobilebreakero.details.components.ShowDatePickerDialog
-import com.mobilebreakero.domain.model.DetailsResponse
-import com.mobilebreakero.domain.model.PhotoDataItem
-import com.mobilebreakero.domain.model.ReviewItem
-import com.mobilebreakero.domain.model.Trip
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.DetailsResponse
+import com.mobilebreakero.auth_domain.model.PhotoDataItem
+import com.mobilebreakero.auth_domain.model.ReviewItem
+import com.mobilebreakero.auth_domain.model.Trip
+import com.mobilebreakero.auth_domain.util.Response
 
 
 @Composable

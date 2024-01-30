@@ -6,12 +6,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobilebreakero.domain.repo.CheckUserSignedIn
-import com.mobilebreakero.domain.repo.DeleteAccountResponse
-import com.mobilebreakero.domain.repo.SignInResponse
-import com.mobilebreakero.domain.usecase.auth.AuthUseCase
-import com.mobilebreakero.domain.util.Response.Success
-import com.mobilebreakero.domain.util.Response.Loading
+import com.mobilebreakero.auth_domain.typealiases.CheckUserSignedIn
+import com.mobilebreakero.auth_domain.typealiases.DeleteAccountResponse
+import com.mobilebreakero.auth_domain.usecase.AuthUseCase
+import com.mobilebreakero.auth_domain.util.Response.Success
+import com.mobilebreakero.auth_domain.util.Response.Loading
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,7 +31,7 @@ class SignInViewModel @Inject constructor(
     var deleteAccountResponse by mutableStateOf<DeleteAccountResponse>(Success(false))
         private set
 
-    fun deleteAccount(email: String) = viewModelScope.launch {
+    fun deleteAccount() = viewModelScope.launch {
         deleteAccountResponse = Loading
         deleteAccountResponse = useCase.deleteAccount()
     }

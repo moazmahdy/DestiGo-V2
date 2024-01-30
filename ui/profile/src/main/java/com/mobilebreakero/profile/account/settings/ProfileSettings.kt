@@ -45,8 +45,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.util.DataUtils.user
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.util.DataUtils.user
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.component.ProfileImage
 import kotlinx.coroutines.delay

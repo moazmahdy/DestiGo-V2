@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -47,7 +47,7 @@ fun BottomNavigation(navController: NavController) {
     )
 
     var selectedIndex by remember {
-        mutableStateOf(1)
+        mutableIntStateOf(1)
     }
 
     LaunchedEffect(currentRoute) {
@@ -78,7 +78,6 @@ fun BottomNavigation(navController: NavController) {
                         onClick = {
                             selectedIndex = index
                             navController.navigate(item.route) {
-
                                 launchSingleTop = true
                             }
                         }

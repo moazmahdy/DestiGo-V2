@@ -12,8 +12,8 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes
-import com.mobilebreakero.domain.util.Response
-import com.mobilebreakero.domain.util.Utils
+import com.mobilebreakero.auth_domain.util.Response
+import com.mobilebreakero.auth_domain.util.Utils
 import com.mobilebreakero.profile.account.accountacess.components.UpdateContent
 
 

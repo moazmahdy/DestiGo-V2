@@ -27,7 +27,7 @@ import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.AuthButton
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.HOME_SCREEN
-import com.mobilebreakero.domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.interestedplaces.InterestedPlacesViewModel
 import com.mobilebreakero.interestedplaces.components.GreetingSection
 import com.mobilebreakero.interestedplaces.components.VerticalGrid

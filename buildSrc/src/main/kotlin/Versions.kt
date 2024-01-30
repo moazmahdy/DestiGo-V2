@@ -18,11 +18,11 @@ object Versions {
         const val MATERIAL = "1.7.0"
         const val GSON = "2.9.0"
         const val LOCATION = "21.1.0"
-        const val SERVICES = "18.3.0"
+        const val SERVICES = "18.2.0"
     }
 
     object AndroidX {
-        const val CORE = "1.8.10"
+        const val CORE = "1.8.0"
         const val APPCOMPAT = "1.6.1"
         const val LIFECYCLE = "2.5.1"
         const val PAGING = "3.1.1"
@@ -36,7 +36,7 @@ object Versions {
 
     object Firebase {
         const val FIRESTORE = "24.10.1"
-        const val FIREBASE_BOM = "32.7.1"
+        const val FIREBASE_BOM = "32.5.0"
         const val FIREBASE_AUTH = "22.3.1"
     }
 
@@ -59,11 +59,12 @@ object Versions {
     }
 
     object Compose {
+        const val COMPOSE = "1.4.3"
         const val COMPOSE_BOOM = "2023.10.01"
         const val COMPOSE_ACTIVITY = "1.7.2"
         const val COMPOSE_NAVIGATION = "2.7.6"
         const val COMPOSE_MATERIAL = "1.6.0"
-        const val COMPOSE_MATERIAL3 = "1.1.2"
+        const val COMPOSE_MATERIAL3 = "1.2.0-alpha10"
         const val COMPOSE_PAGING = "1.0.0-alpha19"
         const val COMPOSE_COIL = "2.5.0"
     }
@@ -80,9 +81,16 @@ object Versions {
 
     const val CORE = "1.5.0"
 
-    const val GOOGLE = "4.3.15"
+    const val GOOGLE = "4.3.8"
 
     const val APPLICATION = "8.0.2"
 
-    val JAVA = JavaVersion.VERSION_17
+    val JAVA = JavaVersion.VERSION_11
+
+    object Camera{
+        const val CAMERAX = "3.3.0"
+        const val CAMERA_CORE = "1.1.0"
+        const val CAMERA_EMBED = "3.6.0"
+        const val CAMERA_VIEW = "1.0.0-alpha31"
+    }
 }

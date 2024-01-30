@@ -33,7 +33,7 @@ fun DeleteAccountConfirmation(viewModel: SignInViewModel = hiltViewModel(), emai
     if (showDialog) {
         DeleteAccountConfirmationDialog(
             onConfirm = {
-                viewModel.deleteAccount(email)
+                viewModel.deleteAccount()
                 showDialog = false
             },
             onCancel = {

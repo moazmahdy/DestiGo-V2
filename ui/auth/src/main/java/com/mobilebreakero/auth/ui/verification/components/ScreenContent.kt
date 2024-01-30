@@ -34,7 +34,7 @@ import com.mobilebreakero.auth.ui.common.components.MainViewModel
 import com.mobilebreakero.auth.ui.signup.SignUpViewModel
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.INTERESTED_PLACES_SCREEN
 import com.mobilebreakero.common_ui.navigation.NavigationRoutes.START_SCREEN
-import com.mobilebreakero.domain.util.Utils.Companion.showMessage
+import com.mobilebreakero.auth_domain.util.Utils.Companion.showMessage
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

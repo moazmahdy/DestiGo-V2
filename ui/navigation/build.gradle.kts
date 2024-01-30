@@ -18,5 +18,5 @@ dependencies {
     implementation(project(Modules.Ui.TRIPS))
     implementation(project(Modules.Ui.INTERESTED_PLACES))
     implementation(project(Modules.COMMON_UI))
-
+    implementation(libs.animated.navigation.bar)
 }

@@ -31,9 +31,9 @@ import androidx.navigation.NavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.domain.model.AppUser
-import com.mobilebreakero.domain.model.Post
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.Post
+import com.mobilebreakero.auth_domain.util.Response
 
 
 @Composable

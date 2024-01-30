@@ -1,23 +1,4 @@
-pluginManagement {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-        maven { url = uri("https://jitpack.io") }
-    }
-}
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-    repositories {
-        google()
-        maven {
-            url = uri("https://jitpack.io")
-        }
-
-        mavenCentral()
-
-    }
-}
+include(":posts:posts_domain")
 
 rootProject.name = "DestiGo"
 include(":app")
@@ -39,3 +20,20 @@ include(":ui:details")
 include(":auth:data")
 include(":auth:domain")
 include(":auth:ui")
+include(":posts:posts_data")
+include(":posts:posts_ui")
+include(":details:details_ui")
+include(":details:details_domain")
+include(":details:details_data")
+include(":profile:profile_ui")
+include(":profile:profile_data")
+include(":profile:profile_domain")
+include(":core:core_ui")
+include(":trips:trips_data")
+include(":trips:trips_domain")
+include(":trips:trips_ui")
+include(":chat:chat_ui")
+include(":splash:splash_ui")
+include(":navigation")
+include(":chat:chat_data")
+include(":chat:chat_domain")

@@ -5,11 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mobilebreakero.domain.model.TripsItem
-import com.mobilebreakero.domain.repo.getPublicTripsResponse
-import com.mobilebreakero.domain.repo.savedPlacesResponse
-import com.mobilebreakero.domain.usecase.firestore.UserUseCase
-import com.mobilebreakero.domain.util.Response
+import com.mobilebreakero.auth_domain.model.TripsItem
+import com.mobilebreakero.auth_domain.repo.getPublicTripsResponse
+import com.mobilebreakero.auth_domain.repo.savedPlacesResponse
+import com.mobilebreakero.auth_domain.usecase.firestore.UserUseCase
+import com.mobilebreakero.auth_domain.util.Response
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

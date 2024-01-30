@@ -56,10 +56,10 @@ import com.mobilebreakero.common_ui.components.AuthButton
 import com.mobilebreakero.common_ui.components.GetUserFromFireStore
 import com.mobilebreakero.common_ui.components.LinearIndicator
 import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.data.repoimpl.GenerateRandomIdNumber
+import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
-import com.mobilebreakero.domain.model.AppUser
+import com.mobilebreakero.auth_domain.model.AppUser
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
