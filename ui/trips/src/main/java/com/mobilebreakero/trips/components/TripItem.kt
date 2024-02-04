@@ -16,7 +16,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.mobilebreakero.common_ui.components.CoilImage
+import com.mobilebreakero.core_ui.components.CoilImage
 
 
 @Composable
@@ -50,7 +50,7 @@ fun TripItem(
                 .align(Alignment.Center)
                 .background(Color(0xFFD5E1FF))
         ) {
-            CoilImage(
+            com.mobilebreakero.core_ui.components.CoilImage(
                 contentDescription = "Trip Image",
                 modifier = Modifier
                     .clip(RoundedCornerShape(10.dp))

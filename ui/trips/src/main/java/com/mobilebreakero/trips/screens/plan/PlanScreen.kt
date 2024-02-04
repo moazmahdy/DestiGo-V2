@@ -44,9 +44,7 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes
+import com.mobilebreakero.navigation_core.NavigationRoutes
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.auth_domain.model.Trip
 import com.mobilebreakero.auth_domain.model.TripsItem
@@ -65,7 +63,7 @@ fun PlanScreen(
     val user = remember { mutableStateOf(AppUser()) }
     val firebaseUser = Firebase.auth.currentUser
 
-    GetUserFromFireStore(id = firebaseUser?.uid ?: "",
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(id = firebaseUser?.uid ?: "",
         user = { userId ->
             userId.id = firebaseUser?.uid
             user.value = userId
@@ -89,7 +87,7 @@ fun PlanScreen(
             SubcomposeAsyncImage(
                 model = "https://m.media-amazon.com/images/I/51lPLv7rdOL._SY466_.jpg",
                 contentDescription = "Travel",
-                loading = { LoadingIndicator() },
+                loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
                 modifier = Modifier
                     .fillMaxSize(),
                 contentScale = ContentScale.FillBounds
@@ -125,7 +123,7 @@ fun PlanScreen(
                         .clip(RoundedCornerShape(15.dp))
                         .background(Color(0xff4F80FF))
                         .clickable {
-                            navController.navigate(NavigationRoutes.CREATE_TRIP)
+                            navController.navigate(com.mobilebreakero.navigation_core.NavigationRoutes.CREATE_TRIP)
                         },
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
@@ -206,7 +204,7 @@ fun PlanScreen(
                 when (trips) {
                     is Response.Loading -> {
                         items(1) {
-                            LoadingIndicator()
+                            com.mobilebreakero.core_ui.components.LoadingIndicator()
                         }
                     }
 
@@ -282,7 +280,7 @@ fun PlanScreen(
                                 when (publicTrips) {
                                     is Response.Loading -> {
                                         items(1) {
-                                            LoadingIndicator()
+                                            com.mobilebreakero.core_ui.components.LoadingIndicator()
                                         }
                                     }
 
@@ -326,7 +324,7 @@ fun PlanScreen(
                     .height(50.dp)
                     .align(BottomCenter)
                     .width(300.dp),
-                onClick = { navController.navigate(NavigationRoutes.CREATE_TRIP) }
+                onClick = { navController.navigate(com.mobilebreakero.navigation_core.NavigationRoutes.CREATE_TRIP) }
             )
         }
 

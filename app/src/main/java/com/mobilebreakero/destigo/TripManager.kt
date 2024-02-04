@@ -1,6 +1,6 @@
 package com.mobilebreakero.destigo
 
-import com.mobilebreakero.auth.ui.common.components.MainViewModel
+import com.mobilebreakero.ui.common.components.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -12,7 +12,7 @@ import java.util.Date
 import java.util.Locale
 
 
-class TripManager(private val viewModel: MainViewModel) {
+class TripManager(private val viewModel: com.mobilebreakero.ui.common.components.MainViewModel) {
 
     private var tripFinishedListener: (() -> Unit)? = null
     private var timerJob: Job? = null

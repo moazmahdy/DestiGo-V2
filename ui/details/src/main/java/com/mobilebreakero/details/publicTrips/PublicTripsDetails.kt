@@ -47,9 +47,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.components.ShowDatePickerDialog
-import com.mobilebreakero.common_ui.components.calculateEndDate
+import com.mobilebreakero.core_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.ShowDatePickerDialog
+import com.mobilebreakero.core_ui.components.calculateEndDate
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
 import com.mobilebreakero.details.components.ElevatedButton
@@ -75,7 +75,7 @@ fun PublicTripDetails(
 
     when (publicTrip) {
         is Response.Loading -> {
-            LoadingIndicator()
+            com.mobilebreakero.core_ui.components.LoadingIndicator()
         }
 
         is Response.Failure -> {
@@ -128,7 +128,7 @@ fun PublicTripDetails(
                             .fillMaxSize(),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        loading = { LoadingIndicator() })
+                        loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() })
                 }
             }
 
@@ -157,7 +157,10 @@ fun PublicTripDetails(
                     var endDate by remember { mutableStateOf(trip.fullJourney?.endDate) }
 
                     if (selectedDate.isNotBlank()) {
-                        endDate = calculateEndDate(selectedDate, tripDays)
+                        endDate = com.mobilebreakero.core_ui.components.calculateEndDate(
+                            selectedDate,
+                            tripDays
+                        )
                         viewModel.updatePublicTripDatevm(
                             id = trip.tripId,
                             startDate = selectedDate,
@@ -165,7 +168,10 @@ fun PublicTripDetails(
                         )
                     } else if (tripDaysUpdate.isNotBlank()) {
                         val startDate: String = trip.fullJourney?.startDate ?: ""
-                        endDate = calculateEndDate(startDate, tripDaysUpdate)
+                        endDate = com.mobilebreakero.core_ui.components.calculateEndDate(
+                            startDate,
+                            tripDaysUpdate
+                        )
                         viewModel.updatePublicTripDatevm(
                             id = trip.tripId,
                             startDate = selectedDate,
@@ -235,7 +241,7 @@ fun PublicTripDetails(
         }
 
         if (isDateClicked.value) {
-            ShowDatePickerDialog(
+            com.mobilebreakero.core_ui.components.ShowDatePickerDialog(
                 selectedDate = selectedDate,
                 onDateSelected = {
                     selectedDate = it
@@ -266,7 +272,7 @@ fun PublicThingsToDo(trip: TripsItem) {
             contentDescription = "Travel",
             modifier = Modifier
                 .fillMaxSize(),
-            loading = { LoadingIndicator() },
+            loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
             contentScale = ContentScale.FillBounds
         )
         Column(
@@ -316,7 +322,7 @@ fun PublicThingsToDo(trip: TripsItem) {
             contentDescription = "Travel",
             modifier = Modifier
                 .fillMaxSize(),
-            loading = { LoadingIndicator() },
+            loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
             contentScale = ContentScale.FillBounds
         )
         Column(
@@ -387,7 +393,7 @@ fun PublicThingsToDo(trip: TripsItem) {
             contentDescription = "Travel",
             modifier = Modifier
                 .fillMaxSize(),
-            loading = { LoadingIndicator() },
+            loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
             contentScale = ContentScale.FillBounds
         )
         Column(
@@ -445,7 +451,7 @@ fun PublicThingsToDo(trip: TripsItem) {
             contentDescription = "Travel",
             modifier = Modifier
                 .fillMaxSize(),
-            loading = { LoadingIndicator() },
+            loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
             contentScale = ContentScale.FillBounds
         )
         Column(

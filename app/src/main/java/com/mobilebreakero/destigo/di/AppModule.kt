@@ -93,26 +93,6 @@ import dagger.hilt.components.SingletonComponent
 object AppModule {
 
     @Provides
-    fun provideAuthUseCases(
-        repo: AuthRepository
-    ) = AuthUseCase(
-        getAuthState = GetAuthState(repo),
-        signInWithEmailAndPassword = SignInWithEmailAndPassword(repo),
-        signUpWithEmailAndPassword = SignUpWithEmailAndPassword(repo),
-        signOut = SignOut(repo),
-        SignInAnnonymously = SignInAnnonymously(repo),
-        sendEmailVerification = SendEmailVerification(repo),
-        sendPasswordResetEmail = SendPasswordResetEmail(repo),
-        currentUser = CurrentUser(repo),
-        reloadUser = ReloadUser(repo),
-        resetPassword = RestPassword(repo),
-        updatePassword = UpdatePassword(repo),
-        updateEmail = UpdateEmail(repo),
-        checkUserSignedIn = CheckUserSignedInUseCase(repo),
-        deleteAccount = DeleteAccount(repo)
-    )
-
-    @Provides
     fun provideFireStoreUseCases(
         repo: FireStoreRepository
     ) = UserUseCase(

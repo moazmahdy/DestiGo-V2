@@ -6,8 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SIGN_IN_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.PROFILE_SCREEN
 import com.mobilebreakero.profile.account.accountacess.components.UpdatePassword
 import com.mobilebreakero.profile.account.accountacess.components.UpdatePasswordContent
 import com.mobilebreakero.profile.account.accountacess.updatepassword.PasswordResetViewModel

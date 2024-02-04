@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.auth_domain.model.DataItem
 import com.mobilebreakero.auth_domain.model.PhotoDataItem
 
@@ -104,7 +104,7 @@ fun SearchResultItem(
                 contentDescription = null,
                 contentScale = FillBounds,
                 loading = {
-                    LoadingIndicator()
+                    com.mobilebreakero.core_ui.components.LoadingIndicator()
                 },
             )
         }

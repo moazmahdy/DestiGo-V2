@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.CoilImage
+import com.mobilebreakero.core_ui.components.CoilImage
 import com.mobilebreakero.auth_domain.model.TripsItem
 
 
@@ -36,7 +36,7 @@ fun PublicPlacesToVisit(
 
         items(places) {
 
-            CoilImage(
+            com.mobilebreakero.core_ui.components.CoilImage(
                 contentDescription = "",
                 modifier = Modifier
                     .height(270.dp)

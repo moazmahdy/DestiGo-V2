@@ -23,10 +23,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.ACCOUNT_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SAVED_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.YOUR_POSTS_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.YOUR_TRIPS_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.ACCOUNT_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.SAVED_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.YOUR_POSTS_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.YOUR_TRIPS_SCREEN
 
 @Composable
 fun CardsDisplay(

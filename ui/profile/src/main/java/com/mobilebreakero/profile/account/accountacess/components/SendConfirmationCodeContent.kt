@@ -24,7 +24,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.AuthButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,8 +31,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mobilebreakero.profile.account.accountacess.updatepassword.PasswordResetViewModel
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.CHOOSE_NEW_PASSWORD
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.PROFILE_SCREEN
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.component.AuthTextField
 
@@ -84,7 +82,7 @@ fun SendConfirmationCodeScreenContent(
 
         Spacer(modifier = Modifier.height(33.dp))
 
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = {
                 sendConfirmationViewModel.sendResetPasswordEmail(
                     emailAddress.value,

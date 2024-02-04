@@ -24,9 +24,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.AuthButton
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.HOME_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.HOME_SCREEN
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.interestedplaces.InterestedPlacesViewModel
 import com.mobilebreakero.interestedplaces.components.GreetingSection
@@ -47,7 +45,7 @@ fun InterestedScreenContent(navController: NavController, viewModel: InterestedP
     val user = remember { mutableStateOf(AppUser()) }
     val firebaseUser = Firebase.auth.currentUser
 
-    GetUserFromFireStore(
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(
         id = firebaseUser?.uid ?: "",
         user = { userId ->
             userId.id = firebaseUser?.uid
@@ -69,7 +67,7 @@ fun InterestedScreenContent(navController: NavController, viewModel: InterestedP
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            AuthButton(
+            com.mobilebreakero.core_ui.components.DestiGoButton(
                 onClick = {
                     viewModel.addInterestedPlacesIntoDatasource(
                         user.value.id ?: "",

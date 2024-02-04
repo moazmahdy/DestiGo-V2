@@ -11,7 +11,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 
 
 @Composable
@@ -33,7 +33,7 @@ fun ProfileImage(
             modifier = Modifier.fillMaxSize(),
             contentScale = contentScale,
             loading = {
-                LoadingIndicator()
+                com.mobilebreakero.core_ui.components.LoadingIndicator()
             }
         )
 

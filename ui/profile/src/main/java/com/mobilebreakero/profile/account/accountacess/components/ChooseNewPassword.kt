@@ -27,7 +27,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.AuthButton
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.component.AuthTextField
 import com.mobilebreakero.profile.component.PasswordTextField
@@ -85,7 +84,7 @@ fun UpdatePasswordContent(
 
         Spacer(modifier = Modifier.height(33.dp))
 
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = {
                 onClick(passwordOrEmail.value)
             },
@@ -168,7 +167,7 @@ fun UpdateContent(
 
         Spacer(modifier = Modifier.height(33.dp))
 
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = {
                 onClick(passwordOrEmail.value)
             },

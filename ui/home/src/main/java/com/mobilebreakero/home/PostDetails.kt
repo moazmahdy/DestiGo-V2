@@ -67,10 +67,10 @@ import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.extensions.rememberZoomState
-import com.mobilebreakero.common_ui.extensions.zoom
+import com.mobilebreakero.core_ui.components.GetUserFromFireStore
+import com.mobilebreakero.core_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.extensions.rememberZoomState
+import com.mobilebreakero.core_ui.extensions.zoom
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.auth_domain.model.Post
 import com.mobilebreakero.auth_domain.util.Response
@@ -108,7 +108,7 @@ fun PostDetailsScreen(
     val numberOfReviews = 15
     val randomReviews = reviewsResponse.shuffled().take(numberOfReviews)
 
-    GetUserFromFireStore(
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(
         id = firebaseUser?.uid ?: "",
         user = { userId ->
             userId.id = firebaseUser?.uid
@@ -242,7 +242,7 @@ fun PostDetailsScreen(
                                 isShown.value = true
                             },
                         loading = {
-                            LoadingIndicator()
+                            com.mobilebreakero.core_ui.components.LoadingIndicator()
                         },
                         contentScale = ContentScale.FillBounds
                     )
@@ -409,7 +409,7 @@ fun PostDetailsScreen(
         }
 
         else -> {
-            LoadingIndicator()
+            com.mobilebreakero.core_ui.components.LoadingIndicator()
         }
     }
 
@@ -543,13 +543,13 @@ fun ViewImage(
             Toast.makeText(context, "Image saved", Toast.LENGTH_SHORT).show()
         }
 
-        val zoomState = rememberZoomState()
+        val zoomState = com.mobilebreakero.core_ui.extensions.rememberZoomState()
         Spacer(modifier = Modifier.height(10.dp))
         SubcomposeAsyncImage(
             model = image,
             contentDescription = null,
             loading = {
-                LoadingIndicator()
+                com.mobilebreakero.core_ui.components.LoadingIndicator()
             },
             contentScale = ContentScale.Fit,
             modifier = Modifier

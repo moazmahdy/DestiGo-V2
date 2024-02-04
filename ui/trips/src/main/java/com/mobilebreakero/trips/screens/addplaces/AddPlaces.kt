@@ -47,8 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.AnimateIcon
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.TRIP_DETAILS
+import com.mobilebreakero.navigation_core.NavigationRoutes.TRIP_DETAILS
 import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
 import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.trips.TripsViewModel
@@ -190,7 +189,7 @@ fun AddPlacesScreen(
                                         },
                                         border = BorderStroke(1.dp, Color(0xff4F80FF)),
                                         content = {
-                                            AnimateIcon(
+                                            com.mobilebreakero.core_ui.components.AnimateIcon(
                                                 modifier = Modifier.padding(5.dp),
                                                 color = Color(0xff4F80FF)
                                             )
@@ -236,7 +235,7 @@ fun AddPlacesScreen(
 
                                         border = BorderStroke(1.dp, Color(0xff4F80FF)),
                                         content = {
-                                            AnimateIcon(
+                                            com.mobilebreakero.core_ui.components.AnimateIcon(
                                                 modifier = Modifier.padding(5.dp),
                                                 color = Color(0xff4F80FF)
                                             )

@@ -46,9 +46,9 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.components.ShowDatePickerDialog
-import com.mobilebreakero.common_ui.components.calculateEndDate
+import com.mobilebreakero.core_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.ShowDatePickerDialog
+import com.mobilebreakero.core_ui.components.calculateEndDate
 import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
 import com.mobilebreakero.details.components.ItemsChip
 import com.mobilebreakero.details.components.PlacesToVisit
@@ -88,7 +88,7 @@ fun TripDetailsScreen(
 
         else -> {
             Response.Loading
-            LoadingIndicator()
+            com.mobilebreakero.core_ui.components.LoadingIndicator()
         }
     }
 
@@ -148,7 +148,7 @@ fun TripDetails(
                             },
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        loading = { LoadingIndicator() })
+                        loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() })
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
@@ -216,15 +216,23 @@ fun TripDetails(
                     var endDate by remember { mutableStateOf(trip.endDate) }
 
                     if (selectedDate.isNotBlank()) {
-                        endDate = calculateEndDate(selectedDate, tripDays)
+                        endDate = com.mobilebreakero.core_ui.components.calculateEndDate(
+                            selectedDate,
+                            tripDays
+                        )
                     } else if (tripDaysUpdate.isNotBlank()) {
                         val startDate: String = trip.startDate ?: ""
-                        endDate = calculateEndDate(startDate, tripDaysUpdate)
+                        endDate = com.mobilebreakero.core_ui.components.calculateEndDate(
+                            startDate,
+                            tripDaysUpdate
+                        )
                     }
 
                     if (tripDaysUpdate.isNotBlank()) {
                         tripDays = tripDaysUpdate
-                        endDate = calculateEndDate(startDate = trip.startDate ?: "", tripDaysUpdate)
+                        endDate = com.mobilebreakero.core_ui.components.calculateEndDate(
+                            startDate = trip.startDate ?: "", tripDaysUpdate
+                        )
                     }
 
                     ItemsChip(title = "To $endDate") {
@@ -321,7 +329,7 @@ fun TripDetails(
         }
 
         if (isDateClicked.value) {
-            ShowDatePickerDialog(
+            com.mobilebreakero.core_ui.components.ShowDatePickerDialog(
                 selectedDate = selectedDate,
                 onDateSelected = {
                     selectedDate = it

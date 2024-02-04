@@ -62,7 +62,7 @@ dependencies {
     hilt()
     firebase()
 
-    implementation(project(Modules.COMMON_UI))
+    implementation(project(Modules.Core.CORE_UI))
 
     implementation(project(Modules.Core.CORE_DOMAIN))
     implementation(project(Modules.Core.CORE_DATA))
@@ -72,6 +72,6 @@ dependencies {
 
     implementation(project(Modules.Ui.HOME))
     implementation(project(Modules.Ui.AUTH))
-    implementation(project(Modules.Ui.NAVIGATION))
+    implementation(project(Modules.NAVIGATION))
 }
 

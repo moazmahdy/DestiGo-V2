@@ -1,9 +1,9 @@
 package com.mobilebreakero.home.components
 
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.HOME_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SCAN_SCREEN
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.TRIPS_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.HOME_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.PROFILE_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.SCAN_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.TRIPS_SCREEN
 import com.mobilebreakero.home.R
 
 sealed class Destinations(val route: String, val icon: Int) {

@@ -21,8 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.AuthButton
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.PROFILE_SCREEN
 import com.mobilebreakero.profile.R
 
 @Composable
@@ -62,7 +61,7 @@ fun PasswordUpdatedSuccessfullyScreenContent(
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = { navController.navigate(PROFILE_SCREEN) },
             text = "Return to Profile",
             buttonColor = Color(0xff4F80FF),

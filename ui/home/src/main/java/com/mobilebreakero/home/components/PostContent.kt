@@ -37,7 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.home.R
 
 
@@ -155,7 +155,7 @@ fun PostItem(
                             topEnd = 5.dp
                         )
                     ),
-                loading = { LoadingIndicator() },
+                loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
                 contentScale = ContentScale.FillBounds
             )
             Spacer(modifier = Modifier.height(8.dp))

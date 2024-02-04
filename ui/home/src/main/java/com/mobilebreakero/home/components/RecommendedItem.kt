@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import com.mobilebreakero.common_ui.components.CoilImage
+import com.mobilebreakero.core_ui.components.CoilImage
 
 
 @Composable
@@ -32,7 +32,7 @@ fun ForYouItem(
             .padding(start = 10.dp)
     ) {
 
-        CoilImage(
+        com.mobilebreakero.core_ui.components.CoilImage(
             contentDescription = "",
             modifier = Modifier
                 .height(275.dp)

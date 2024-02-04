@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.START_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.START_SCREEN
 import com.mobilebreakero.welcome.R
 import kotlinx.coroutines.launch
 

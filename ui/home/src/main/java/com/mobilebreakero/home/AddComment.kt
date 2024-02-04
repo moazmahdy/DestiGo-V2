@@ -35,7 +35,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
+import com.mobilebreakero.core_ui.components.GetUserFromFireStore
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.viewModel.HomeViewModel
 
@@ -51,7 +51,7 @@ fun AddCommentScreen(
     val firebaseUser = Firebase.auth.currentUser
     val comment = remember { mutableStateOf("") }
 
-    GetUserFromFireStore(
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(
         user = { uId ->
             uId.id = firebaseUser?.uid
             user.value = uId

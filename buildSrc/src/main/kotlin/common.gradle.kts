@@ -61,10 +61,10 @@ android {
         @Incubating
         compose = true
     }
-
     kapt {
         correctErrorTypes = true
     }
+
     composeOptions {
         kotlinCompilerExtensionVersion = Versions.Compose.COMPOSE
     }
@@ -84,4 +84,7 @@ dependencies {
     design()
     camera()
     testImplementation(Dependencies.Test.Unit.JUNIT)
+    testImplementation(Dependencies.Test.Integration.JUNIT)
+    testImplementation(Dependencies.Test.Integration.ESPRESSO_CORE)
+    androidTestImplementation(Dependencies.Test.Integration.JUNIT)
 }

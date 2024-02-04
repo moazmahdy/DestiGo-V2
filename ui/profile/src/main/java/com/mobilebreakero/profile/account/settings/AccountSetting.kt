@@ -35,9 +35,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.PROFILE_SETTINGS
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SIGN_IN_BEFORE_UPDATE
+import com.mobilebreakero.navigation_core.NavigationRoutes.PROFILE_SETTINGS
+import com.mobilebreakero.navigation_core.NavigationRoutes.SIGN_IN_BEFORE_UPDATE
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.component.ProfileImage
@@ -52,7 +51,7 @@ fun AccountSettingsContent(
 
     val firebaseUser = Firebase.auth.currentUser
 
-    GetUserFromFireStore(
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(
         user = { uId ->
             uId.id = firebaseUser?.uid
             user.value = uId

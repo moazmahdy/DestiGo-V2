@@ -7,8 +7,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mobilebreakero.profile.account.accountacess.updatepassword.PasswordResetViewModel
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.CONFIRM_CODE_SENT
+import com.mobilebreakero.navigation_core.NavigationRoutes.CONFIRM_CODE_SENT
 import com.mobilebreakero.auth_domain.util.Response.Loading
 import com.mobilebreakero.auth_domain.util.Response.Success
 import com.mobilebreakero.auth_domain.util.Response.Failure
@@ -22,7 +21,7 @@ fun SendEmailForResettingPassword(
 ) {
     val context = LocalContext.current
     when(val sendEmailVerificationResponse = viewModel.sendPasswordResetEmailResponse) {
-        is Loading -> LoadingIndicator()
+        is Loading -> com.mobilebreakero.core_ui.components.LoadingIndicator()
         is Success -> {
             val isEmailSent = sendEmailVerificationResponse.data
             LaunchedEffect(isEmailSent) {

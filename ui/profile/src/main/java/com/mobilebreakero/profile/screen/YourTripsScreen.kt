@@ -17,8 +17,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.GetUserFromFireStore
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.auth_domain.model.Trip
 import com.mobilebreakero.auth_domain.model.TripsItem
@@ -34,7 +34,7 @@ fun YourTripsScreen(
     val user = remember { mutableStateOf(AppUser()) }
     val firebaseUser = Firebase.auth.currentUser
 
-    GetUserFromFireStore(
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(
         id = firebaseUser?.uid ?: "",
         user = { userId ->
             userId.id = firebaseUser?.uid
@@ -59,7 +59,7 @@ fun YourTripsScreen(
         when (yourtrips) {
             is Response.Loading -> {
                 items(1) {
-                    LoadingIndicator()
+                    com.mobilebreakero.core_ui.components.LoadingIndicator()
                 }
             }
 
@@ -97,7 +97,7 @@ fun YourTripsScreen(
         when (publicTrips) {
             is Response.Loading -> {
                 items(1) {
-                    LoadingIndicator()
+                    com.mobilebreakero.core_ui.components.LoadingIndicator()
                 }
             }
 

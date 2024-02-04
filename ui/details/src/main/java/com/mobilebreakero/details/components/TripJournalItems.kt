@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.details.R
 import com.mobilebreakero.auth_domain.model.Trip
 
@@ -63,7 +63,7 @@ fun TripJournal(
                 contentDescription = "Travel",
                 modifier = Modifier
                     .fillMaxSize(),
-                loading = { LoadingIndicator() },
+                loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
                 contentScale = ContentScale.FillBounds
             )
             Column(
@@ -160,7 +160,7 @@ fun TripJournal(
                                         modifier = Modifier
                                             .fillMaxWidth()
                                             .height(200.dp),
-                                        loading = { LoadingIndicator() },
+                                        loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
                                         contentScale = ContentScale.FillBounds
                                     )
 

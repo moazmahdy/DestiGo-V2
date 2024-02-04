@@ -20,9 +20,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.CHOOSE_NEW_EMAIL
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.CHOOSE_NEW_USERNAME
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SEND_CONFIRMATION_CODE
+import com.mobilebreakero.navigation_core.NavigationRoutes.CHOOSE_NEW_EMAIL
+import com.mobilebreakero.navigation_core.NavigationRoutes.CHOOSE_NEW_USERNAME
+import com.mobilebreakero.navigation_core.NavigationRoutes.SEND_CONFIRMATION_CODE
 import com.mobilebreakero.profile.R
 import com.mobilebreakero.profile.account.accountacess.deleteyouremail.DeleteAccountConfirmation
 import com.mobilebreakero.profile.account.settings.SettingsCard

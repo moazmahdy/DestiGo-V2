@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes
+import com.mobilebreakero.navigation_core.NavigationRoutes
 import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
 import com.mobilebreakero.trips.TripsViewModel
 import com.mobilebreakero.trips.components.CreateTripButton
@@ -102,7 +102,7 @@ fun PlanCheckListScreen(
                 }
                 if (screenRoot.isEmpty()) {
                     navController.navigate("AddPlaces/$tripId")
-                } else if (screenRoot == NavigationRoutes.TRIP_DETAILS) {
+                } else if (screenRoot == com.mobilebreakero.navigation_core.NavigationRoutes.TRIP_DETAILS) {
                     navController.navigate("tripDetails/$tripId")
                 } else {
                     navController.navigate("AddPlaces/$tripId")

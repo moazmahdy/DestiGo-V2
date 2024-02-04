@@ -54,21 +54,21 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.components.GuideCardDesign
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.design_system.Modifiers
-import com.mobilebreakero.common_ui.design_system.Padding
-import com.mobilebreakero.common_ui.design_system.SpacerHeights
-import com.mobilebreakero.common_ui.components.VSpacer
-import com.mobilebreakero.common_ui.design_system.Borders
-import com.mobilebreakero.common_ui.design_system.fontSize
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.CREATE_TRIP
+import com.mobilebreakero.navigation_core.NavigationRoutes.CREATE_TRIP
 import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.auth_domain.model.Post
 import com.mobilebreakero.auth_domain.model.TripsItem
 import com.mobilebreakero.auth_domain.util.Response
+import com.mobilebreakero.core_ui.components.GetUserFromFireStore
+import com.mobilebreakero.core_ui.components.GuideCardDesign
+import com.mobilebreakero.core_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.VSpacer
+import com.mobilebreakero.core_ui.design_system.Borders
+import com.mobilebreakero.core_ui.design_system.Padding
+import com.mobilebreakero.core_ui.design_system.SpacerHeights
+import com.mobilebreakero.core_ui.design_system.TextStyles
+import com.mobilebreakero.core_ui.design_system.fontSize
 import com.mobilebreakero.home.components.AddButtonDesign
 import com.mobilebreakero.home.components.ForYouItem
 import com.mobilebreakero.home.components.PostItem
@@ -88,7 +88,10 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
 
     val user = remember { mutableStateOf(AppUser()) }
     val firebaseUser = Firebase.auth.currentUser
-    val textModifier = Modifier.padding(start = Padding.medium, bottom = Padding.small)
+    val textModifier = Modifier.padding(
+        start = Padding.medium10,
+        bottom = Padding.small5
+    )
 
     GetUserFromFireStore(
         id = firebaseUser?.uid ?: "",
@@ -122,12 +125,12 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
     val context = LocalContext.current
 
     Box(
-        modifier = Modifiers
+        modifier = com.mobilebreakero.core_ui.design_system.Modifiers
             .fillMaxSize
             .verticalScroll(scrollState)
     ) {
         Column(
-            modifier = Modifiers.fillMaxSize,
+            modifier = com.mobilebreakero.core_ui.design_system.Modifiers.fillMaxSize,
         ) {
             (if (user.value.id != null) user.value.name else "user")?.let {
                 TopScreenImage(
@@ -139,7 +142,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
             var selectedPlacesItemIndex by remember { mutableIntStateOf(selectedIndex) }
             var selectedTripsItemIndex by remember { mutableIntStateOf(selectedIndex) }
 
-            VSpacer(height = SpacerHeights.large)
+            VSpacer(height = SpacerHeights.large15)
             GuideCardDesign(
                 title = stringResource(id = R.string.getReady),
                 description = stringResource(id = R.string.exploreDestinations),
@@ -150,16 +153,16 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                 }
             )
 
-            VSpacer(height = SpacerHeights.large)
+            VSpacer(height = SpacerHeights.large15)
 
             TitleText(text = stringResource(R.string.forYou))
 
             Text(
                 text = stringResource(id = R.string.recommendTrips),
-                fontSize = fontSize.small,
+                fontSize = fontSize.small12,
                 modifier = textModifier
             )
-            VSpacer(height = SpacerHeights.small)
+            VSpacer(height = SpacerHeights.small5)
             LazyRow {
                 items(userRecommended.size) { index ->
                     var isTripSaved by remember { mutableStateOf(false) }
@@ -229,7 +232,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                 }
             }
             val sheetState = rememberModalBottomSheetState()
-            VSpacer(height = SpacerHeights.xlarge)
+            VSpacer(height = SpacerHeights.large20)
             GuideCardDesign(
                 image = destinationsImage,
                 title = stringResource(id = R.string.getPlaces),
@@ -247,9 +250,9 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                 },
                 buttonLabel = stringResource(id = R.string.letsExploreLabel)
             )
-            VSpacer(height = SpacerHeights.large)
+            VSpacer(height = SpacerHeights.large15)
             TitleText(text = stringResource(id = R.string.bestDestinationsForYou))
-            VSpacer(height = SpacerHeights.small)
+            VSpacer(height = SpacerHeights.small5)
             LazyRow {
                 items(userRecommendedPlaces.size) { index ->
                     val item = userRecommendedPlaces[index]
@@ -520,7 +523,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                 }
             }
 
-            VSpacer(height = SpacerHeights.xlarge)
+            VSpacer(height = SpacerHeights.large20)
 
             GuideCardDesign(
                 image = socialImage,
@@ -540,15 +543,15 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                 buttonLabel = stringResource(id = R.string.letsTakeAlook)
             )
 
-            VSpacer(height = SpacerHeights.large)
+            VSpacer(height = SpacerHeights.large15)
             TitleText(text = stringResource(R.string.travellersPosts))
 
             Text(
                 text = stringResource(id = R.string.youCanPost),
-                fontSize = fontSize.small,
+                style = TextStyles.ContentTextStyle14,
                 modifier = textModifier
             )
-            VSpacer(height = SpacerHeights.small)
+            VSpacer(height = SpacerHeights.small5)
             LazyColumn(
                 modifier = Modifier
                     .height(450.dp)
@@ -638,6 +641,7 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
                                         }
 
                                         is Response.Failure -> {
+
                                             Toast.makeText(
                                                 context,
                                                 "Error sharing post",
@@ -697,18 +701,18 @@ fun ItemsChip(title: String, onClick: () -> Unit) {
 
     Box(
         modifier = Modifier
-            .padding(4.dp)
+            .padding(Padding.small5)
             .background(Color.Transparent)
-            .clip(RoundedCornerShape(20.dp))
+            .clip(Borders.roundedCornerShape20)
             .wrapContentHeight()
             .wrapContentWidth()
             .clickable { onClick() }
-            .border(Borders.mainBorder, RoundedCornerShape(20.dp))
+            .border(Borders.mainBorder1, Borders.roundedCornerShape20)
     ) {
         Text(
             text = title,
-            fontSize = 14.sp,
-            modifier = Modifier.padding(10.dp),
+            style = TextStyles.ContentTextStyle14,
+            modifier = Modifier.padding(Padding.medium10),
         )
     }
 

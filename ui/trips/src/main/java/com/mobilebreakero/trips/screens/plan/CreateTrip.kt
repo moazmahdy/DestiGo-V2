@@ -42,11 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.AuthButton
-import com.mobilebreakero.common_ui.components.MapView
-import com.mobilebreakero.common_ui.components.ShowDatePickerDialog
-import com.mobilebreakero.common_ui.components.calculateEndDate
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.TRIPS_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.TRIPS_SCREEN
 import com.mobilebreakero.auth_domain.model.Trip
 import com.mobilebreakero.auth_domain.util.DataUtils
 import com.mobilebreakero.trips.TripsViewModel
@@ -197,7 +193,7 @@ fun CreateTripScreen(
                 .padding(12.dp)
         )
 
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = {
                 isLocationClicked.value = true
             },
@@ -219,7 +215,7 @@ fun CreateTripScreen(
                 .padding(12.dp)
         )
 
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = {
                 isDateClicked.value = true
             },
@@ -281,7 +277,8 @@ fun CreateTripScreen(
                 .height(50.dp)
                 .width(320.dp),
             onClick = {
-                endDate = calculateEndDate(selectedDate, howLong)
+                endDate =
+                    com.mobilebreakero.core_ui.components.calculateEndDate(selectedDate, howLong)
                 tripCategory = getCategoryBasedOnUserTravelReason(travelReason)
                 howLong = howLong.ifBlank {
                     "0"
@@ -309,7 +306,7 @@ fun CreateTripScreen(
     }
 
     if (isLocationClicked.value) {
-        MapView(
+        com.mobilebreakero.core_ui.components.MapView(
             onLocationSelected = {
                 selectedLocation = it
                 isLocationClicked.value = false
@@ -323,10 +320,12 @@ fun CreateTripScreen(
 
 
     if (isDateClicked.value) {
-        ShowDatePickerDialog(selectedDate = selectedDate, onDateSelected = {
-            selectedDate = it
-            isDateClicked.value = false
-        })
+        com.mobilebreakero.core_ui.components.ShowDatePickerDialog(
+            selectedDate = selectedDate,
+            onDateSelected = {
+                selectedDate = it
+                isDateClicked.value = false
+            })
     }
 
 }

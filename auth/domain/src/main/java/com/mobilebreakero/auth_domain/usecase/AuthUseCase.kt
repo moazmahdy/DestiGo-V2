@@ -4,7 +4,7 @@ data class AuthUseCase(
     val currentUser: CurrentUser,
     val getAuthState: GetAuthState,
     val signInWithEmailAndPassword: SignInWithEmailAndPassword,
-    val SignInAnnonymously: SignInAnnonymously,
+    val signInAnonymously: SignInAnnonymously,
     val signUpWithEmailAndPassword: SignUpWithEmailAndPassword,
     val signOut: SignOut,
     val reloadUser: ReloadUser,

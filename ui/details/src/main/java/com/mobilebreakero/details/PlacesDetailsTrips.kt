@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.SubcomposeAsyncImage
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.details.components.AmenitiesCard
 import com.mobilebreakero.details.components.DetailsCard
 import com.mobilebreakero.details.components.ItemsChip
@@ -96,7 +96,7 @@ fun PlacesDetailsTrips(
 
                         else -> {
                             Response.Loading
-                            LoadingIndicator()
+                            com.mobilebreakero.core_ui.components.LoadingIndicator()
                         }
                     }
 
@@ -108,7 +108,7 @@ fun PlacesDetailsTrips(
 
                 else -> {
                     Response.Loading
-                    LoadingIndicator()
+                    com.mobilebreakero.core_ui.components.LoadingIndicator()
                 }
             }
         }
@@ -119,7 +119,7 @@ fun PlacesDetailsTrips(
 
         else -> {
             Response.Loading
-            LoadingIndicator()
+            com.mobilebreakero.core_ui.components.LoadingIndicator()
         }
     }
 }
@@ -163,7 +163,7 @@ fun PlacesTripDetailsContent(
                         modifier = Modifier.fillMaxSize(),
                         contentDescription = null,
                         contentScale = ContentScale.FillBounds,
-                        loading = { LoadingIndicator() })
+                        loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() })
                     Box(
                         modifier = Modifier
                             .fillMaxSize()

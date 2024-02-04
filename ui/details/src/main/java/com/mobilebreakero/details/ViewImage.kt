@@ -30,10 +30,10 @@ import coil.ImageLoader
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import coil.request.SuccessResult
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.details.components.ElevatedButton
-import com.mobilebreakero.common_ui.extensions.rememberZoomState
-import com.mobilebreakero.common_ui.extensions.zoom
+import com.mobilebreakero.core_ui.extensions.rememberZoomState
+import com.mobilebreakero.core_ui.extensions.zoom
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -72,13 +72,13 @@ fun ViewImage(
             Toast.makeText(context, "Image saved", Toast.LENGTH_SHORT).show()
         }
 
-        val zoomState = rememberZoomState()
+        val zoomState = com.mobilebreakero.core_ui.extensions.rememberZoomState()
         Spacer(modifier = Modifier.height(10.dp))
         SubcomposeAsyncImage(
             model = image,
             contentDescription = null,
             loading = {
-                LoadingIndicator()
+                com.mobilebreakero.core_ui.components.LoadingIndicator()
             },
             contentScale = ContentScale.Fit,
             modifier = Modifier

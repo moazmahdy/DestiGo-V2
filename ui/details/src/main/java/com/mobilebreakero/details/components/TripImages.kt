@@ -41,7 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
 import com.mobilebreakero.details.ViewImage
@@ -93,7 +93,7 @@ fun TripImages(
                 contentDescription = "Travel",
                 modifier = Modifier
                     .fillMaxSize(),
-                loading = { LoadingIndicator() },
+                loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() },
                 contentScale = ContentScale.FillBounds
             )
             Column(
@@ -190,7 +190,7 @@ fun TripImages(
                                 .clip(RoundedCornerShape(20.dp)),
                             contentDescription = null,
                             contentScale = ContentScale.FillBounds,
-                            loading = { LoadingIndicator() })
+                            loading = { com.mobilebreakero.core_ui.components.LoadingIndicator() })
                 }
                 if (isShown.value) {
                     ModalBottomSheet(

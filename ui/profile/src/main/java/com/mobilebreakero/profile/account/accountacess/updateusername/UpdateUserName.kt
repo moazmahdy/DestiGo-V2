@@ -10,8 +10,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes
+import com.mobilebreakero.navigation_core.NavigationRoutes
 import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.auth_domain.util.Utils
 import com.mobilebreakero.profile.account.accountacess.components.UpdateContent
@@ -35,7 +34,7 @@ fun ChooseNewUserName(
             textField = "type a new username",
             buttonText = "Update username",
             cancelText = "return to settings",
-            cancelNav = NavigationRoutes.ACCOUNT_ACCESS_SETTINGS,
+            cancelNav = com.mobilebreakero.navigation_core.NavigationRoutes.ACCOUNT_ACCESS_SETTINGS,
             onClick = { username ->
                 if (userId != null) {
                     viewModel.updateUserName(
@@ -57,13 +56,13 @@ fun UpdateUser(
 
     val context = LocalContext.current
     when (val updateEmail = viewModel.updateUserNameResponse) {
-        is Response.Loading -> LoadingIndicator()
+        is Response.Loading -> com.mobilebreakero.core_ui.components.LoadingIndicator()
         is Response.Success -> {
             val isEmailUpdated = updateEmail.data
             LaunchedEffect(isEmailUpdated) {
                 if (isEmailUpdated) {
                     Utils.showMessage(context, "UserName updated successfully")
-                    navController.navigate(NavigationRoutes.PROFILE_SCREEN)
+                    navController.navigate(com.mobilebreakero.navigation_core.NavigationRoutes.PROFILE_SCREEN)
                 }
             }
         }

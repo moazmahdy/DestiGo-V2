@@ -49,8 +49,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.mobilebreakero.addpost.R
 import com.mobilebreakero.addpost.viewmodel.AddPostViewModel
-import com.mobilebreakero.common_ui.components.MapView
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.HOME_SCREEN
+import com.mobilebreakero.navigation_core.NavigationRoutes.HOME_SCREEN
 import com.mobilebreakero.auth_domain.model.Post
 import com.mobilebreakero.auth_domain.util.DataUtils
 import kotlinx.coroutines.delay
@@ -95,7 +94,7 @@ fun AddPostCard(navController: NavController, viewModel: AddPostViewModel = hilt
 
             TitleText()
             if (isLocationClicked) {
-                MapView(onLocationSelected = {
+                com.mobilebreakero.core_ui.components.MapView(onLocationSelected = {
                     selectedLocation = it
                     isLocationClicked = false
                 }, getGovernment = {

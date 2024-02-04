@@ -1,10 +1,11 @@
 object Modules {
 
-    const val COMMON_UI = ":common-ui"
+    const val NAVIGATION = ":navigation"
 
     object Core {
-        const val CORE_DOMAIN = ":core:core-domain"
-        const val CORE_DATA = ":core:core-data"
+        const val CORE_DOMAIN = ":core:core_domain"
+        const val CORE_DATA = ":core:core_data"
+        const val CORE_UI = ":core:core_ui"
     }
 
     object Auth {
@@ -101,7 +102,6 @@ object Modules {
         const val AUTH = ":ui:auth"
         const val ADD_POST = ":ui:addPost"
         const val INTERESTED_PLACES = ":ui:Interestedplaces"
-        const val NAVIGATION = ":ui:navigation"
         const val SEARCH = ":ui:search"
     }
 

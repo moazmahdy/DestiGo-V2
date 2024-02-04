@@ -28,10 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.AuthButton
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.ACCOUNT_ACCESS_SETTINGS
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.SEND_CONFIRMATION_CODE
+import com.mobilebreakero.navigation_core.NavigationRoutes.ACCOUNT_ACCESS_SETTINGS
+import com.mobilebreakero.navigation_core.NavigationRoutes.SEND_CONFIRMATION_CODE
 import com.mobilebreakero.auth_domain.util.Response
 import com.mobilebreakero.auth_domain.util.Utils
 import com.mobilebreakero.auth_domain.util.Utils.Companion.showMessage
@@ -77,7 +75,7 @@ fun SignInBeforeUpdatingYourInformation(
         Spacer(modifier = Modifier.height(20.dp))
         val context = LocalContext.current
 
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = {
                 viewModel.signInWithEmailAndPassword(
                     email = emailText.trim().lowercase(),
@@ -123,7 +121,7 @@ fun SignIn(
 ) {
 
     when (val signInResponse = viewModel.signInResponse) {
-        is Response.Loading -> LoadingIndicator()
+        is Response.Loading -> com.mobilebreakero.core_ui.components.LoadingIndicator()
         is Response.Success -> {
             navController.navigate(ACCOUNT_ACCESS_SETTINGS)
         }

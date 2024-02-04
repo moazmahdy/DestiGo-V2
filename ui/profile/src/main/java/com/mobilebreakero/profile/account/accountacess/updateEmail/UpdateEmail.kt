@@ -6,8 +6,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.LoadingIndicator
-import com.mobilebreakero.common_ui.navigation.NavigationRoutes.EMAIL_SENT_SUCCESSFULY
+import com.mobilebreakero.navigation_core.NavigationRoutes.EMAIL_SENT_SUCCESSFULY
 import com.mobilebreakero.auth_domain.util.Response.Failure
 import com.mobilebreakero.auth_domain.util.Response.Loading
 import com.mobilebreakero.auth_domain.util.Response.Success
@@ -22,7 +21,7 @@ fun UpdateEmail(
 
     val context = LocalContext.current
     when (val updateEmail = viewModel.updateEmailResponse) {
-        is Loading -> LoadingIndicator()
+        is Loading -> com.mobilebreakero.core_ui.components.LoadingIndicator()
         is Success -> {
             val isEmailUpdated = updateEmail.data
             LaunchedEffect(isEmailUpdated) {

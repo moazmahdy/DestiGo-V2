@@ -5,5 +5,5 @@ plugins {
 }
 
 android {
-    namespace = "com.mobilebreakero.navigation"
+    namespace = "com.mobilebreakero.navigation_core"
 }

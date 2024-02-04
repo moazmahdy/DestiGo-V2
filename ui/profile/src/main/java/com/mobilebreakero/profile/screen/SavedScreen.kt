@@ -31,9 +31,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mobilebreakero.common_ui.components.CoilImage
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.components.LoadingIndicator
+import com.mobilebreakero.core_ui.components.CoilImage
+import com.mobilebreakero.core_ui.components.GetUserFromFireStore
+import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.auth_domain.model.RecommendedPlaceItem
 import com.mobilebreakero.auth_domain.model.TripsItem
@@ -49,7 +49,7 @@ fun SavedScreen(
     val firebaseUser = Firebase.auth.currentUser
     val scrollState = rememberScrollState()
 
-    GetUserFromFireStore(
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(
         id = firebaseUser?.uid ?: "",
         user = { userId ->
             userId.id = firebaseUser?.uid
@@ -76,7 +76,7 @@ fun SavedScreen(
             when (savedPlaces) {
                 is Response.Loading -> {
                     items(1) {
-                        LoadingIndicator()
+                        com.mobilebreakero.core_ui.components.LoadingIndicator()
                     }
                 }
 
@@ -115,7 +115,7 @@ fun SavedScreen(
             when (publicTrips) {
                 is Response.Loading -> {
                     items(1) {
-                        LoadingIndicator()
+                        com.mobilebreakero.core_ui.components.LoadingIndicator()
                     }
                 }
 
@@ -176,7 +176,7 @@ fun TripItem(
                 .align(Alignment.Center)
                 .background(Color(0xFFD5E1FF))
         ) {
-            CoilImage(
+            com.mobilebreakero.core_ui.components.CoilImage(
                 contentDescription = "Trip Image",
                 modifier = Modifier
                     .clip(RoundedCornerShape(10.dp))

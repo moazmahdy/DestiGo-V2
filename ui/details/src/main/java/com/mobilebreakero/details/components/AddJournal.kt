@@ -52,14 +52,11 @@ import coil.compose.SubcomposeAsyncImage
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.mobilebreakero.common_ui.components.AuthButton
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
-import com.mobilebreakero.common_ui.components.LinearIndicator
-import com.mobilebreakero.common_ui.components.LoadingIndicator
 import com.mobilebreakero.auth_data.repoimpl.GenerateRandomIdNumber
+import com.mobilebreakero.auth_domain.model.AppUser
+import com.mobilebreakero.core_ui.components.GetUserFromFireStore
 import com.mobilebreakero.details.DetailsViewModel
 import com.mobilebreakero.details.R
-import com.mobilebreakero.auth_domain.model.AppUser
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -90,6 +87,7 @@ fun AddTripJournal(
     val uploadProgress by remember { mutableStateOf(0f) }
     var imageLink by remember { mutableStateOf("") }
     var isUploading by remember { mutableStateOf(false) }
+
 
 
 
@@ -166,7 +164,7 @@ fun AddTripJournal(
             )
             Spacer(modifier = Modifier.height(10.dp))
 
-            AuthButton(
+            com.mobilebreakero.core_ui.components.DestiGoButton(
                 onClick = {
                     isDateClicked.value = true
                 },
@@ -199,7 +197,7 @@ fun AddTripJournal(
                     .clip(RoundedCornerShape(bottomEnd = 25.dp, bottomStart = 25.dp)),
                 contentScale = ContentScale.Crop,
                 loading = {
-                    LoadingIndicator()
+                    com.mobilebreakero.core_ui.components.LoadingIndicator()
                 }
             )
 
@@ -231,7 +229,7 @@ fun AddTripJournal(
             )
         }
         if (isUploading) {
-            LinearIndicator(uploadProgress)
+            com.mobilebreakero.core_ui.components.LinearIndicator(uploadProgress)
         }
 
         if (isDateClicked.value) {

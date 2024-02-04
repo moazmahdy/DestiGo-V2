@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.GetUserFromFireStore
+import com.mobilebreakero.core_ui.components.GetUserFromFireStore
 import com.mobilebreakero.auth_domain.model.AppUser
 import com.mobilebreakero.auth_domain.model.Post
 import com.mobilebreakero.auth_domain.repo.postResponse
@@ -59,7 +59,7 @@ fun ProfileDetailsScreen(
 
     viewModel.getPostsById(userId = user.value.id ?: "")
 
-    GetUserFromFireStore(
+    com.mobilebreakero.core_ui.components.GetUserFromFireStore(
         id = userID,
         user = { userId ->
             userId.id = userID

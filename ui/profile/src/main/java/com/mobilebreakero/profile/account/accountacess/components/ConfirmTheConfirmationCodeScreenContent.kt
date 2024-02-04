@@ -22,7 +22,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.mobilebreakero.common_ui.components.AuthButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -86,7 +85,7 @@ fun ConfirmTheConfirmationCodeScreenContent(
         Spacer(modifier = Modifier.height(33.dp))
 
         val context = LocalContext.current
-        AuthButton(
+        com.mobilebreakero.core_ui.components.DestiGoButton(
             onClick = {
                 if (CheckConfirmationCode(confirmationCode.toInt(), context)
                 ) {
