@@ -65,7 +65,7 @@ import com.mobilebreakero.core_ui.components.GuideCardDesign
 import com.mobilebreakero.core_ui.components.LoadingIndicator
 import com.mobilebreakero.core_ui.components.VSpacer
 import com.mobilebreakero.core_ui.design_system.Borders
-import com.mobilebreakero.core_ui.design_system.Padding
+import com.mobilebreakero.core_ui.design_system.Dimens
 import com.mobilebreakero.core_ui.design_system.SpacerHeights
 import com.mobilebreakero.core_ui.design_system.TextStyles
 import com.mobilebreakero.core_ui.design_system.fontSize
@@ -89,8 +89,8 @@ fun HomeScreen(navController: NavController, viewModel: HomeViewModel = hiltView
     val user = remember { mutableStateOf(AppUser()) }
     val firebaseUser = Firebase.auth.currentUser
     val textModifier = Modifier.padding(
-        start = Padding.medium10,
-        bottom = Padding.small5
+        start = Dimens.medium10,
+        bottom = Dimens.small5
     )
 
     GetUserFromFireStore(
@@ -701,18 +701,18 @@ fun ItemsChip(title: String, onClick: () -> Unit) {
 
     Box(
         modifier = Modifier
-            .padding(Padding.small5)
+            .padding(Dimens.small5)
             .background(Color.Transparent)
             .clip(Borders.roundedCornerShape20)
             .wrapContentHeight()
             .wrapContentWidth()
             .clickable { onClick() }
-            .border(Borders.mainBorder1, Borders.roundedCornerShape20)
+            .border(Borders.blueBorder, Borders.roundedCornerShape20)
     ) {
         Text(
             text = title,
             style = TextStyles.ContentTextStyle14,
-            modifier = Modifier.padding(Padding.medium10),
+            modifier = Modifier.padding(Dimens.medium10),
         )
     }
 

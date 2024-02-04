@@ -21,8 +21,8 @@ import com.mobilebreakero.core_ui.components.VSpacer
 import com.mobilebreakero.core_ui.components.buttonContainerColor
 import com.mobilebreakero.core_ui.design_system.MainHeight.mediumHeight50
 import com.mobilebreakero.core_ui.design_system.MainWidth.largeWidth250
-import com.mobilebreakero.core_ui.design_system.Padding.large20
-import com.mobilebreakero.core_ui.design_system.Padding.small5
+import com.mobilebreakero.core_ui.design_system.Dimens.large20
+import com.mobilebreakero.core_ui.design_system.Dimens.small5
 import com.mobilebreakero.navigation_core.NavigationRoutes.EMAIL_VERIFICATION_SCREEN
 import com.mobilebreakero.ui.common.components.AuthContent
 import com.mobilebreakero.ui.common.components.DestiGoTextField

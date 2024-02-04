@@ -3,13 +3,14 @@ package com.mobilebreakero.core_ui.design_system
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-object Padding {
+object Dimens {
     val small5 = 5.dp
     val medium10 = 10.dp
     val medium12 = 12.dp
     val large15 = 15.dp
     val large20 = 20.dp
     val extraLarge25 = 25.dp
+    val extraLarge30 = 30.dp
 }
 
 object fontSize {
@@ -24,31 +25,6 @@ object fontSize {
     val extraLarge36 = 36.sp
 }
 
-object IconSize {
-    val small12 = 12.dp
-    val medium16 = 16.dp
-    val large20 = 20.dp
-    val large24 = 24.dp
-    val large28 = 28.dp
-    val extraLarge34 = 34.dp
-}
-
-object SpacerHeights {
-    val small5 = 5.dp
-    val medium10 = 10.dp
-    val large15 = 15.dp
-    val large20 = 20.dp
-    val large25 = 25.dp
-    val extraLarge30 = 30.dp
-}
-
-object SpacerWidths {
-    val small5 = 5.dp
-    val medium10 = 10.dp
-    val large15 = 15.dp
-    val large20 = 20.dp
-    val large25 = 25.dp
-}
 
 object MainHeight {
     val mainHeight60 = 60.dp
