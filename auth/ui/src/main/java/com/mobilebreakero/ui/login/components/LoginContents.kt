@@ -15,8 +15,8 @@ import com.mobilebreakero.auth_domain.util.Utils.Companion.showMessage
 import com.mobilebreakero.core_ui.components.DestiGoButton
 import com.mobilebreakero.core_ui.components.VSpacer
 import com.mobilebreakero.core_ui.components.buttonContainerColor
-import com.mobilebreakero.core_ui.design_system.SpacerHeights.extraLarge30
-import com.mobilebreakero.core_ui.design_system.SpacerHeights.large20
+import com.mobilebreakero.core_ui.design_system.Dimens.extraLarge30
+import com.mobilebreakero.core_ui.design_system.Dimens.large20
 import com.mobilebreakero.navigation_core.NavigationRoutes.HOME_SCREEN
 import com.mobilebreakero.navigation_core.NavigationRoutes.SEND_FORGET_PASSWORD_EMAIL
 import com.mobilebreakero.ui.common.components.AuthContent

@@ -2,11 +2,10 @@ package com.mobilebreakero.ui.signup.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.navigation.NavController
+import com.mobilebreakero.core_ui.design_system.Modifiers.fillMaxSize
 import com.mobilebreakero.ui.signup.components.SignUpWithEmailAndPassword
 
 @Composable
@@ -14,11 +13,11 @@ fun SignUpScreen(
     navController: NavController
 ) {
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = fillMaxSize) {
 
         Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = fillMaxSize,
+            horizontalAlignment = CenterHorizontally
         ) {
             SignUpWithEmailAndPassword(navController = navController)
         }

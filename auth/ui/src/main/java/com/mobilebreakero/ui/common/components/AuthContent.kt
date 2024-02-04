@@ -8,9 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import com.mobilebreakero.core_ui.components.VSpacer
+import com.mobilebreakero.core_ui.design_system.Dimens.large20
 import com.mobilebreakero.core_ui.design_system.MainHeight.extraLargeHeight100
 import com.mobilebreakero.core_ui.design_system.MainWidth.mediumWidth120
-import com.mobilebreakero.core_ui.design_system.SpacerHeights.large20
 import com.mobilebreakero.ui.R
 
 

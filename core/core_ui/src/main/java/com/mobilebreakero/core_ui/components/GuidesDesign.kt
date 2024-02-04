@@ -1,7 +1,7 @@
 package com.mobilebreakero.core_ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Arrangement.Bottom
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -12,13 +12,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.ContentScale.Companion.FillBounds
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
-import com.mobilebreakero.core_ui.design_system.TextStyles
+import com.mobilebreakero.core_ui.design_system.Dimens
+import com.mobilebreakero.core_ui.design_system.Dimens.medium10
+import com.mobilebreakero.core_ui.design_system.Dimens.medium12
 import com.mobilebreakero.core_ui.design_system.Modifiers
-import com.mobilebreakero.core_ui.design_system.Padding
-import com.mobilebreakero.core_ui.design_system.SpacerHeights
+import com.mobilebreakero.core_ui.design_system.Modifiers.fillMaxSize
+import com.mobilebreakero.core_ui.design_system.TextStyles.ContentTextStyle12
+import com.mobilebreakero.core_ui.design_system.TextStyles.HeaderTextStyle36
+import com.mobilebreakero.core_ui.design_system.TextStyles.MainTextStyle16
 
 const val guideImageContentDescription = "guide card image"
 val guideImageHeight = 500.dp
@@ -41,8 +45,8 @@ fun GuideCardDesign(
             model = image,
             contentDescription = guideImageContentDescription,
             loading = { LoadingIndicator() },
-            modifier = Modifiers.fillMaxSize,
-            contentScale = ContentScale.FillBounds
+            modifier = fillMaxSize,
+            contentScale = FillBounds
         )
         Box(
             modifier = Modifiers
@@ -52,24 +56,24 @@ fun GuideCardDesign(
         Column(
             modifier = Modifiers
                 .fillMaxSize
-                .padding(Padding.medium10),
-            verticalArrangement = Arrangement.Bottom
+                .padding(medium10),
+            verticalArrangement = Bottom
         ) {
             Text(
                 text = title,
-                style = TextStyles.HeaderTextStyle36
+                style = HeaderTextStyle36
             )
             Text(
                 text = description,
-                style = TextStyles.MainTextStyle16
+                style = MainTextStyle16
             )
-            VSpacer(height = SpacerHeights.medium10)
+            VSpacer(height = medium12)
             Button(
                 onClick = {
                     onClick()
                 },
                 modifier = Modifier
-                    .padding(Padding.medium10),
+                    .padding(Dimens.medium10),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = buttonContainerColor,
                     contentColor = buttonContentColor
@@ -77,7 +81,7 @@ fun GuideCardDesign(
             ) {
                 Text(
                     text = buttonLabel,
-                    style = TextStyles.ContentTextStyle12
+                    style = ContentTextStyle12
                 )
             }
         }

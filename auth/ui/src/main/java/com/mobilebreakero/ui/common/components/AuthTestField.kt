@@ -31,8 +31,8 @@ import com.mobilebreakero.core_ui.design_system.Colors.mainTextColor
 import com.mobilebreakero.core_ui.design_system.MainHeight.mainHeight60
 import com.mobilebreakero.core_ui.design_system.MainWidth.largeWidth350
 import com.mobilebreakero.core_ui.design_system.Modifiers.fillMaxSize
-import com.mobilebreakero.core_ui.design_system.Padding.large20
-import com.mobilebreakero.core_ui.design_system.Padding.medium12
+import com.mobilebreakero.core_ui.design_system.Dimens.large20
+import com.mobilebreakero.core_ui.design_system.Dimens.medium12
 import com.mobilebreakero.ui.R
 import com.mobilebreakero.ui.common.components.TextFieldModifier.tfMainModifier
 
